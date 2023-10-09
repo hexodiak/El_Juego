@@ -32,7 +32,7 @@ public class Playermovement : MonoBehaviour
     
     //Wall slide
     private bool isWallSliding;
-    private float wallSlindingSpeed = 1f;
+    private float wallSlindingSpeed = 1.5f;
 
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
