@@ -1,28 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
     #region Variables
-
+	//Health
     public int maxHealth = 50;
 	int currentHealth;
+	public Slider healthBarPlayer;
 
+	//Damage
 	int swordDamage = 5;
 
-    #endregion
+	#endregion
 
-    #region Damage-Health Player
+	#region Damage-Health Player
+
+	public void SetMaxHealth(int maxHealth)
+    {
+		healthBarPlayer.maxValue = maxHealth;
+		healthBarPlayer.value = maxHealth;
+    }
+
+	public void SetHealth(int health)
+    {
+		healthBarPlayer.value = health;
+
+	}
+
+
+
+
 	void Start()
 	{
 		currentHealth = maxHealth;
+		SetMaxHealth(maxHealth);
 	}
 
     public void TakeDamagePlayer(int damage)
 	{
 
 		currentHealth -= damage;
+		SetHealth(currentHealth);
 
 		//Hurt animation
 		//animator.SetTrigger("nombre de animacion");
