@@ -7,9 +7,10 @@ public class PlayerStats : MonoBehaviour
 {
     #region Variables
 	//Health
+	public Slider healthBarPlayer;
     public int maxHealth = 50;
 	int currentHealth;
-	public Slider healthBarPlayer;
+	
 
 	//Damage
 	int swordDamage = 5;
@@ -17,7 +18,7 @@ public class PlayerStats : MonoBehaviour
 	#endregion
 
 	#region Damage-Health Player
-
+	//HealthBar
 	public void SetMaxHealth(int maxHealth)
     {
 		healthBarPlayer.maxValue = maxHealth;
@@ -30,9 +31,16 @@ public class PlayerStats : MonoBehaviour
 
 	}
 
+	//Health Potions
+	public void HealthPotions()
+    {
+
+    }
 
 
 
+
+	//Player health
 	void Start()
 	{
 		currentHealth = maxHealth;
