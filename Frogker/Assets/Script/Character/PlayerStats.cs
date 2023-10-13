@@ -8,9 +8,12 @@ public class PlayerStats : MonoBehaviour
     #region Variables
 	//Health
 	public Slider healthBarPlayer;
-    public int maxHealth = 50;
+    int maxHealth = 50;
 	int currentHealth;
-	
+	//HealthPotions
+	public GameObject[] potionsArray;
+	private int countPotions;
+	int healing = 10;
 
 	//Damage
 	int swordDamage = 5;
@@ -19,32 +22,81 @@ public class PlayerStats : MonoBehaviour
 
 	#region Damage-Health Player
 	//HealthBar
-	public void SetMaxHealth(int maxHealth)
+	public void SetMaxHealth(int maxHealth)//setear la vida maxima como parametos en la barra UI
     {
 		healthBarPlayer.maxValue = maxHealth;
 		healthBarPlayer.value = maxHealth;
     }
-
-	public void SetHealth(int health)
+	public void SetHealth(int health)//setear la vida actual que va teniendo el personaje
     {
 		healthBarPlayer.value = health;
 
 	}
 
 	//Health Potions
-	public void HealthPotions()
+	public void CurrentHealthPotions(int consumePotion)
     {
+		
+			Destroy(potionsArray[consumePotion].gameObject);
+        
+		
+    }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))//al inserta la tecla E se toma la pocion que restaura vida y quita una
+        {
+			if(countPotions != 0)
+            {
+				if(currentHealth == maxHealth)
+				{
+					Debug.Log("Tienes toda la vida, no puedes usar otra pocion");
+					Debug.Log("CANTIDAD DE POCIONES "+countPotions);
+					Debug.Log("VIDA MAXIMA "+ maxHealth+"  VIDA ACTUAL "+currentHealth);
+				}
+				else
+				{
+					currentHealth += healing;
+
+					if (currentHealth > maxHealth)
+					{
+						currentHealth = maxHealth;//sumo la cantidad que cura
+						SetHealth(currentHealth);//se setea en la barra el healing de la pocion
+						countPotions -= 1;
+						CurrentHealthPotions(countPotions);//se consume una pocion, menos una pocion
+						Debug.Log("CANTIDAD DE POCIONES " + countPotions);
+						Debug.Log("VIDA MAXIMA " + maxHealth + "  VIDA ACTUAL " + currentHealth);
+					}
+					else
+					{
+						SetHealth(currentHealth);//se setea en la barra el healing de la pocion
+						countPotions -= 1;
+						CurrentHealthPotions(countPotions);//se consume una pocion, menos una pocion
+						Debug.Log("CANTIDAD DE POCIONES " + countPotions);
+						Debug.Log("VIDA MAXIMA " + maxHealth + "  VIDA ACTUAL " + currentHealth);
+					}
+				
+			
+                }
+
+            }
+            else
+            {
+				Debug.Log("Te quedaste sin pociones");
+			}
+			
+
+		}
     }
 
 
-
-
-	//Player health
-	void Start()
+    //Player health
+    void Start()
 	{
-		currentHealth = maxHealth;
-		SetMaxHealth(maxHealth);
+		currentHealth = maxHealth;//medir la vida maxima con la actual, se puede trackear para el guardado
+		SetMaxHealth(maxHealth);//se hace el set con respecto a la vida en la barra UI
+		countPotions = potionsArray.Length;
+
 	}
 
     public void TakeDamagePlayer(int damage)
