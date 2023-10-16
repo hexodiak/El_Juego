@@ -5,7 +5,7 @@ using UnityEngine;
 public class Troll_Enemy : MonoBehaviour
 {
     #region Variables
-    public PlayerStats player;
+    PlayerStats player;
 
     public int enemyDamage = 3;
 
