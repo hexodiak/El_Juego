@@ -21,6 +21,8 @@ public class Playermovement : MonoBehaviour
     //Double Jump
     private bool doubleJump;
 
+    
+
     //Dash 
     private bool canDash = true;
     private bool isDashing;
@@ -47,6 +49,7 @@ public class Playermovement : MonoBehaviour
 
     //Animations
     private Animator _animation;
+    public ParticleSystem feetDust;
 
     //Crounch
     private bool crounch;
@@ -99,6 +102,7 @@ public class Playermovement : MonoBehaviour
 
             if (isGrounded() || doubleJump)
             {
+                feetDust.Play();
                 RB.velocity = new Vector2(RB.position.x, jumpingPower);
                 doubleJump = !doubleJump;
             }
@@ -227,7 +231,7 @@ public class Playermovement : MonoBehaviour
     }
 
     //Flip
-        private void Flip()
+    private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
@@ -235,6 +239,11 @@ public class Playermovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+
+            if (isGrounded())
+            {
+                feetDust.Play();
+            }
         }
     }
 }
