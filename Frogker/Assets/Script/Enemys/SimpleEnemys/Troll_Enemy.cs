@@ -6,10 +6,13 @@ public class Troll_Enemy : MonoBehaviour
 {
     #region Variables
     PlayerStats player;
+    
 
     public int enemyDamage = 3;
 
     #endregion
+
+    
 
     #region Damage Player
     private void OnCollisionEnter2D(Collision2D collision)//cuando choca con un enemigo el personaje se le baja vida
