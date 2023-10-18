@@ -63,6 +63,8 @@ public class Playermovement : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal"); // X | -1 0 1
+        _animation.SetFloat("Speed", Mathf.Abs(horizontal));//running animation
+
         _animation.SetBool("isJumping", !isGrounded());
         _animation.SetBool("isSliding", isWallSliding);
 
