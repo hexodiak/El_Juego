@@ -47,7 +47,7 @@ public class PlayerCombat : MonoBehaviour
         {
             //Debug.Log("Hit " + enemy.name);
 
-            enemy.GetComponent<Troll_Enemy>().TakeDamage(attackdamage);
+            enemy.GetComponent<EnemyBasic>().TakeDamage(attackdamage);
         }
 
     }
