@@ -50,9 +50,9 @@ public class PlayerStats : MonoBehaviour
             {
 				if(currentHealth == maxHealth)
 				{
+					//sonido
 					Debug.Log("Tienes toda la vida, no puedes usar otra pocion");
-					Debug.Log("CANTIDAD DE POCIONES "+countPotions);
-					Debug.Log("VIDA MAXIMA "+ maxHealth+"  VIDA ACTUAL "+currentHealth);
+					
 				}
 				else
 				{
@@ -64,16 +64,14 @@ public class PlayerStats : MonoBehaviour
 						SetHealth(currentHealth);//se setea en la barra el healing de la pocion
 						countPotions -= 1;
 						CurrentHealthPotions(countPotions);//se consume una pocion, menos una pocion
-						Debug.Log("CANTIDAD DE POCIONES " + countPotions);
-						Debug.Log("VIDA MAXIMA " + maxHealth + "  VIDA ACTUAL " + currentHealth);
+						
 					}
 					else
 					{
 						SetHealth(currentHealth);//se setea en la barra el healing de la pocion
 						countPotions -= 1;
 						CurrentHealthPotions(countPotions);//se consume una pocion, menos una pocion
-						Debug.Log("CANTIDAD DE POCIONES " + countPotions);
-						Debug.Log("VIDA MAXIMA " + maxHealth + "  VIDA ACTUAL " + currentHealth);
+						
 					}
 				
 			
@@ -82,6 +80,7 @@ public class PlayerStats : MonoBehaviour
             }
             else
             {
+				//sonido
 				Debug.Log("Te quedaste sin pociones");
 			}
 			
