@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Troll_Enemy : MonoBehaviour
 {
@@ -8,13 +9,12 @@ public class Troll_Enemy : MonoBehaviour
     //Variables de unity
     public Animator animator;
     public Transform attackpoint;
-
-    //Variables de script
-
+    Seeker seeker;
+    AIPath aI;
     
 
     //Variables script
-    public float attackRange = 0.3f;
+    public float attackRange = 5f;
     public LayerMask playerLayer;
     public int attackdamage = 10;
     public float attackRate = 17f;
@@ -24,19 +24,40 @@ public class Troll_Enemy : MonoBehaviour
 
 
     #region Melee Fighting behavior
-
-     
-    void Update()
+    void Start()
     {
+        seeker = GetComponent<Seeker>();
+        aI = GetComponent<AIPath>();
+    }
 
-        //Melee side attack
-        if (Time.time > nextAttack) 
+    //void Update()
+    //{
+
+    //Melee side attack
+    //if (Time.time > nextAttack) 
+    //{
+
+    //Attack(attackpoint);
+    // nextAttack = Time.time + attackRate;
+
+    //}
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "OnAttack")
         {
-            
+            aI.enabled = false;
             Attack(attackpoint);
-            nextAttack = Time.time + attackRate;
-
+            StartCoroutine(waitThreeSeconds());
         }
+    }
+
+    IEnumerator waitThreeSeconds()
+    {
+        yield return new WaitForSeconds(2);
+        aI.enabled = true;
+
     }
 
     void Attack(Transform AttackPoint)
