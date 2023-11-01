@@ -14,10 +14,8 @@ public class Troll_Enemy : MonoBehaviour
 
 
     //Variables script
-    private float horizontal; // Definir direccion
-    private bool isFacingRight = true;//movimiento
-
-    public float attackRange = 0.5f;//rango de ataque melee
+    public float attackRange = 3f;//para seguir al jugador
+    public float attackMeleeRange = 0.5f;//rango de ataque melee
     public LayerMask playerLayer;//layer para atacar solo al jugador
     public int attackdamage = 10;//damage del troll
     public float attackRate = 17f;//variable para el ataque y circunferencia
@@ -35,32 +33,24 @@ public class Troll_Enemy : MonoBehaviour
 
     void Update()
     {
-        horizontal = rb.velocityX;
-        Flip();
+        if (Vector2.Distance(player.position, rb.position) <= attackRange)
+        {
+            animator.SetTrigger("TrollAttack");
+        }
+        
+        LookAtPlayer();
     }
+
+    
 
     public void MeleeAttack()
     {
-        aI.canMove = false;//variable del AI para controlar la inteligencia si moverse o no
-        Attack(attackpoint);
-        StartCoroutine(waitThreeSeconds());
-        
-    }
-
-    IEnumerator waitThreeSeconds()
-    {
-        yield return new WaitForSeconds(2);
-        aI.canMove = true;//variable del AI para controlar la inteligencia si moverse o no
-
-    }
-
-    void Attack(Transform AttackPoint)
-    {
+        aI.canMove = false;//el enemigo se queda quieto para empezar su ataque
         //Play an attack animation
-        animator.SetTrigger("TrollAttack");
+        //animator.SetTrigger("TrollAttack");
 
         //Player in range
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(AttackPoint.position, attackRange, playerLayer);
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackpoint.position, attackMeleeRange, playerLayer);
 
         //Damage him
         foreach (Collider2D player in hitPlayer)
@@ -69,7 +59,20 @@ public class Troll_Enemy : MonoBehaviour
             player.GetComponent<PlayerStats>().TakeDamagePlayer(attackdamage);
         }
 
+
+        StartCoroutine(waitThreeSeconds());
+
     }
+
+    IEnumerator waitThreeSeconds()
+    {
+        animator.ResetTrigger("TrollAttack");
+        yield return new WaitForSeconds(2);
+        aI.canMove = true;//variable del AI para controlar la inteligencia si moverse o no
+
+    }
+
+    
 
     void OnDrawGizmosSelected()
     {
@@ -77,23 +80,34 @@ public class Troll_Enemy : MonoBehaviour
         if (attackpoint == null)
             return;
 
-        Gizmos.DrawWireSphere(attackpoint.position, attackRange);
+        Gizmos.DrawWireSphere(attackpoint.position, attackMeleeRange);
+        Gizmos.DrawWireSphere(this.gameObject.transform.position, attackRange);
     }
 
+    #endregion
 
-    private void Flip()
+    #region Flip enemy 
+
+    public Transform player;
+    public bool isFlipped = false;
+
+    public void LookAtPlayer()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+        Vector3 flipped = transform.localScale;
+        flipped.z *= -1f;
 
-            
+        if (transform.position.x < player.position.x && isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = false;
+        }
+        else if (transform.position.x > player.position.x && !isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = true;
         }
     }
     #endregion
-
-
 }
