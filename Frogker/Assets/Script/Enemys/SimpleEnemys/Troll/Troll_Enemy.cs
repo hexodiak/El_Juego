@@ -5,13 +5,17 @@ using Pathfinding;
 
 public class Troll_Enemy : MonoBehaviour
 {
-    #region Variables
+    #region Variables Generales
+
     //Variables de unity
-    public Rigidbody2D rb;
     public Animator animator;//animador de movimientos
     public Transform attackpoint;//transform del ataque melee
-    AIPath aI;//variable del AI para controlar la inteligencia si moverse o no
 
+
+    #endregion
+
+
+    #region Melee Fighting behavior
 
     //Variables script
     public float attackRange = 3f;//para seguir al jugador
@@ -21,33 +25,17 @@ public class Troll_Enemy : MonoBehaviour
     public float attackRate = 17f;//variable para el ataque y circunferencia
     private float nextAttack = 1.0f;//controlar el siguiente ataque con cooldown
 
-    #endregion
-
-
-    #region Melee Fighting behavior
-    void Start()
-    {
-        
-        aI = GetComponent<AIPath>();//variable del AI para controlar la inteligencia si moverse o no
-    }
-
     void Update()
     {
-        if (Vector2.Distance(player.position, rb.position) <= attackRange)
-        {
-            animator.SetTrigger("TrollAttack");
-        }
-        
-        LookAtPlayer();
+        LookAtPlayer();//Voltear al jugador
+
+
     }
 
     
 
     public void MeleeAttack()
     {
-        aI.canMove = false;//el enemigo se queda quieto para empezar su ataque
-        //Play an attack animation
-        //animator.SetTrigger("TrollAttack");
 
         //Player in range
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackpoint.position, attackMeleeRange, playerLayer);
@@ -60,15 +48,13 @@ public class Troll_Enemy : MonoBehaviour
         }
 
 
-        StartCoroutine(waitThreeSeconds());
-
     }
 
-    IEnumerator waitThreeSeconds()
+    public IEnumerator waitThreeSeconds()//Metodo para esperar segundos
     {
-        animator.ResetTrigger("TrollAttack");
+        
         yield return new WaitForSeconds(2);
-        aI.canMove = true;//variable del AI para controlar la inteligencia si moverse o no
+        
 
     }
 
