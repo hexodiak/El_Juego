@@ -5,7 +5,11 @@ using UnityEngine;
 public class TonguePoint : MonoBehaviour
 {
     public Transform tonguePoint;
-    public Rigidbody2D rb;
+    public Transform topPoint;
+
+    public LayerMask playerLayer;
+
+    public int range = 2;
     
     void Start()
     {
@@ -15,8 +19,19 @@ public class TonguePoint : MonoBehaviour
     
     void Update()
     {
-        if (Vector2.Distance(tonguePoint.position, tonguePoint.position) < 3) { 
-            //Debug
+        Collider2D[] insideTonguePointArea = Physics2D.OverlapCircleAll(tonguePoint.position, range, playerLayer);
+
+        //Damage then
+        foreach (Collider2D inside in insideTonguePointArea)
+        {
+            Debug.Log("Dentro del rango esta: " + inside.name);
+            //enemy.GetComponent<EnemyBasic>().TakeDamage(attackdamage);
+
+            if (Input.GetButtonDown("Fire3"))
+            {
+                //float step = 140f * Time.deltaTime;
+                inside.transform.position = Vector3.MoveTowards(inside.transform.position, topPoint.position, 1.9f);
+            }
         }
     }
 
@@ -27,6 +42,6 @@ public class TonguePoint : MonoBehaviour
         if (tonguePoint == null)
             return;
 
-        Gizmos.DrawWireSphere(tonguePoint.position, 3);
+        Gizmos.DrawWireSphere(tonguePoint.position, range);
     }
 }
