@@ -17,6 +17,7 @@ public class TonguePoint : MonoBehaviour
     }
 
     
+
     void Update()
     {
         Collider2D[] insideTonguePointArea = Physics2D.OverlapCircleAll(tonguePoint.position, range, playerLayer);
@@ -24,13 +25,14 @@ public class TonguePoint : MonoBehaviour
         //Damage then
         foreach (Collider2D inside in insideTonguePointArea)
         {
-            Debug.Log("Dentro del rango esta: " + inside.name);
+            //Debug.Log("Dentro del rango esta: " + inside.name);
             //enemy.GetComponent<EnemyBasic>().TakeDamage(attackdamage);
 
             if (Input.GetButtonDown("Fire3"))
             {
-                //float step = 140f * Time.deltaTime;
-                inside.transform.position = Vector3.MoveTowards(inside.transform.position, topPoint.position, 1.9f);
+                
+                inside.transform.position = Vector3.Lerp(inside.transform.position, topPoint.position, 0.90F);
+
             }
         }
     }
