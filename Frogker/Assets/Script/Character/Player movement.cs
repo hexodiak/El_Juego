@@ -51,7 +51,7 @@ public class Playermovement : MonoBehaviour
     private float wallJumpingTime = 0.2f;
     private float wallJumpingCounter;
     private float wallJumpingDuration = 0.4f;
-    private Vector2 wallJumpingPower = new Vector2(5f, 10f);
+    private Vector2 wallJumpingPower = new Vector2(5f, 8f);
 
     #endregion
 
