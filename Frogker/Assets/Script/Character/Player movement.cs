@@ -5,23 +5,31 @@ using UnityEngine;
 
 public class Playermovement : MonoBehaviour
 {
+    #region Variables Movimiento, salto, crouch
 
-    //Movimiento y salto
     private float horizontal; // Definir direccion
     private float verticalVelocity;
     private float speed = 5f; // Velocidad total
-    private float jumpingPower = 8f; // Distancia de salto
-    //private float jumpHeight = 0;
+    private float jumpingPower = 6f; // Potencia de salto
+    //private float jumpHeight = 0; //prueba
     private bool isFacingRight = true; // Definir X
+    private bool doubleJump; // Controla el segundo salto en el aire
+    private bool crounch; // identificador de estar agachado funciona junto con el groundcheck
 
-    [SerializeField] private Rigidbody2D RB;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
+    #endregion
 
-    //Double Jump
-    private bool doubleJump;
+    #region Serialize para identificar
 
-    
+    [SerializeField] private Rigidbody2D RB; // identificador de rigidbody
+    [SerializeField] private Transform groundCheck; //identificar el suelo
+    [SerializeField] private LayerMask groundLayer;  // identificar los suelos
+    [SerializeField] private TrailRenderer tr; // trail para dibujar un rastro
+    [SerializeField] private Transform wallCheck; // identificar los objetos de paredes
+    [SerializeField] private LayerMask wallLayer; // identificar los layer que son paredes
+
+    #endregion
+
+    #region Variables de Dash
 
     //Dash 
     private bool canDash = true;
@@ -29,15 +37,13 @@ public class Playermovement : MonoBehaviour
     private float dashinPower = 10f;
     private float dashinTime = 0.2f;
     private float dashinCooldown = 0.5f;
-    
-    [SerializeField] private TrailRenderer tr;
-    
+
+    #endregion
+
+    #region Variables del wall jump y sliding
     //Wall slide
     private bool isWallSliding;
     private float wallSlindingSpeed = 1.5f;
-
-    [SerializeField] private Transform wallCheck;
-    [SerializeField] private LayerMask wallLayer;
 
     //Wall Jump
     private bool isWallJumping;
@@ -47,12 +53,15 @@ public class Playermovement : MonoBehaviour
     private float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new Vector2(5f, 10f);
 
+    #endregion
+
+    #region Variables para animacion y efectos
     //Animations
     private Animator _animation;
     public ParticleSystem feetDust;
+    #endregion
 
-    //Crounch
-    private bool crounch;
+
 
     private void Awake()
     {
@@ -105,7 +114,7 @@ public class Playermovement : MonoBehaviour
             if (isGrounded() || doubleJump)
             {
                 feetDust.Play();
-                RB.velocity = new Vector2(RB.position.x, jumpingPower);
+                RB.velocity = new Vector2(RB.position.x, jumpingPower); //codigo de salto
                 doubleJump = !doubleJump;
             }
                         
