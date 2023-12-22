@@ -10,11 +10,16 @@ public class Playermovement : MonoBehaviour
     private float horizontal; // Definir direccion
     private float verticalVelocity;
     private float speed = 5f; // Velocidad total
-    private float jumpingPower = 6f; // Potencia de salto
-    //private float jumpHeight = 0; //prueba
     private bool isFacingRight = true; // Definir X
     private bool doubleJump; // Controla el segundo salto en el aire
     private bool crounch; // identificador de estar agachado funciona junto con el groundcheck
+
+    
+    private float jumpingPower = 10f; // Potencia de salto
+    //Prueba para salto segun apretada la tecla
+    public float jumpStartTime; //prueba
+    private float jumpTime; //prueba
+    private bool isJumping; //prueba
 
     #endregion
 
@@ -114,11 +119,31 @@ public class Playermovement : MonoBehaviour
             if (isGrounded() || doubleJump)
             {
                 feetDust.Play();
+                isJumping = true;
+                jumpTime = jumpStartTime;
                 RB.velocity = new Vector2(RB.position.x, jumpingPower); //codigo de salto
-                doubleJump = !doubleJump;
+                doubleJump = !doubleJump; 
             }
                         
         }
+        if (Input.GetButton("Jump") && isJumping == true)
+        {
+            if (jumpTime > 0)
+            {
+                RB.velocity = new Vector2(RB.position.x, jumpingPower); //codigo de salto
+                jumpTime -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
