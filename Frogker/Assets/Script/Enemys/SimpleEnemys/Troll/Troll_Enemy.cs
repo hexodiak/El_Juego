@@ -15,7 +15,7 @@ public class Troll_Enemy : MonoBehaviour
     #endregion
 
 
-    #region Melee Fighting behavior
+    #region Variables Melee Fighting behavior
 
     //Variables script
     public float attackRange = 3f;//para seguir al jugador
@@ -25,6 +25,8 @@ public class Troll_Enemy : MonoBehaviour
     public float attackRate = 17f;//variable para el ataque y circunferencia
     private float nextAttack = 1.0f;//controlar el siguiente ataque con cooldown
 
+    #endregion
+
     void Update()
     {
         LookAtPlayer();//Voltear al jugador
@@ -32,7 +34,7 @@ public class Troll_Enemy : MonoBehaviour
 
     }
 
-    
+    #region Melee Attack with wait seconds
 
     public void MeleeAttack()
     {
@@ -58,7 +60,9 @@ public class Troll_Enemy : MonoBehaviour
 
     }
 
-    
+    #endregion
+
+
 
     void OnDrawGizmosSelected()
     {
@@ -70,7 +74,7 @@ public class Troll_Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(this.gameObject.transform.position, attackRange);
     }
 
-    #endregion
+   
 
     #region Flip enemy 
 
