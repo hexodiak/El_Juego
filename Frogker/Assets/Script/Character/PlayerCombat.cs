@@ -7,34 +7,52 @@ public class PlayerCombat : MonoBehaviour
     #region Variables
     //Variables de unity
     public Animator animator;
-    public Transform attackpoint;
-    public Transform attackPointUp;
-    public Transform attackPointDownGrounded;
 
-    //Variables script
+    //Transforms p
+    public Transform attackPoint;
+    //public Transform attackPointUp; //aun no se usan
+    //public Transform attackPointDownGrounded; //aun no se usan
+
+    //Variables para ataque melee
     public float attackRange = 0.3f;
     public LayerMask enemyLayers;
     public int attackdamage = 10;
     public float attackRate = 3f;
+    float nextAttackTime = 3;
 
+    //Variables para ataque de rango
+    public Transform featherPoint; //donde sale la pluma
+    public GameObject feather; //pluma
 
     #endregion
-    
 
-    #region Melee Attack
+
+
     void Update()
     {
-        //Melee side attack
+        #region Melee side attack
         if (Input.GetButtonDown("Fire1")) //!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W) &&
         {
-            Debug.Log("Ataque de lado");
-            Attack(attackpoint);
-            //nextAttackTime = Time.time + 1f / attackRate;
+            //if(nextAttackTime >= 3)
+            //{
+                //nextAttackTime = 0;
+                Debug.Log("Ataque de lado");
+                StickAttack(attackPoint);
+                //nextAttackTime = Time.time + 1f / attackRate;
+            //}
+        }
+        #endregion
+
+        #region Range Feather Attack
+        if (Input.GetButtonDown("Fire2")) 
+        {
+            FeatherAttack();
+        }
+        #endregion
 
         }
-    }
-
-    void Attack(Transform AttackPoint)
+    #region Melee Attacks
+    void StickAttack(Transform AttackPoint) //Stick attack
     {
         //Play an attack animation
         animator.SetTrigger("MeleeAttack");
@@ -55,10 +73,18 @@ public class PlayerCombat : MonoBehaviour
     void OnDrawGizmosSelected()
     {
 
-        if (attackpoint == null)
+        if (attackPoint == null)
             return;
 
-        Gizmos.DrawWireSphere(attackpoint.position, attackRange);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
     #endregion
+
+    #region Range Attacks
+    void FeatherAttack() //Feather attack
+    {
+        Instantiate(feather, featherPoint.position, featherPoint.rotation);
+    }
+    #endregion
+
 }
