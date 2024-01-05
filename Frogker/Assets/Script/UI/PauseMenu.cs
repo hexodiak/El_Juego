@@ -5,51 +5,68 @@ using UnityEngine.SceneManagement;//scenes
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-    public GameObject pauseMenuUi;
-    
+    [SerializeField] private GameObject _mainMenuCanvasGO;
+    [SerializeField] private GameObject _settingsCanvasGO;
 
-    //public bool inGame = false;
+    private bool isPaused;
+    private void Start()
+    {
+        _mainMenuCanvasGO.SetActive(false);
+        _settingsCanvasGO.SetActive(false);
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (InputManager.instance.MenuOpenCloseInput)
         {
-
-            if (GameIsPaused)
-            {
-                Resume();
-            }else if (!GameIsPaused)
+            if (!isPaused)
             {
                 Pause();
             }
-            
+            else
+            {
+                Resume();
+            }
         }
     }
 
+    #region Pause and resume methods
     public void Resume()
     {
-        pauseMenuUi.SetActive(false); //se desactiva la escena
-        Time.timeScale = 1f; //devuelve tiempo normal
-        GameIsPaused = false;
+        isPaused = false;
+        Time.timeScale = 1f;
+
+        CloseMenus();
+    }
+
+    private void CloseMenus()
+    {
+        _mainMenuCanvasGO.SetActive(false);
+        _settingsCanvasGO.SetActive(false);
     }
 
     public void Pause()
     {
-        pauseMenuUi.SetActive(true); //se activa la escena
-        Time.timeScale = 0f; //freezea tiempo
-        GameIsPaused = true;
+        isPaused = true;
+        Time.timeScale = 0f;
+
+        OpenMainMenu();
     }
+    private void OpenMainMenu() 
+    {
+        _mainMenuCanvasGO.SetActive(true);
+        _settingsCanvasGO.SetActive(false);
+    }
+    #endregion
 
     public void Options()
     {
-        //SceneManager.LoadScene(2);
+
     }
 
     public void GoToMenu()
     {
-        //Time.timeScale = 1f;
-        //SceneManager.LoadScene(1);
+        
     }
 
 }
