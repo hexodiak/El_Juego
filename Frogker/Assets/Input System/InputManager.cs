@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
 
     private PlayerInput _playerInput;
     private InputAction _menuOpenCloseAction;
+
+    
     private void Awake()
     {
         if(instance == null)
