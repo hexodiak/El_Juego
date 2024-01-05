@@ -10,7 +10,7 @@ public class PlayerCombat : MonoBehaviour
 
     //Transforms p
     public Transform attackPoint;
-    //public Transform attackPointUp; //aun no se usan
+    public Transform attackPointUp;
     //public Transform attackPointDownGrounded; //aun no se usan
 
     //Variables para ataque melee
@@ -31,7 +31,7 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
         #region Melee side attack
-        if (Input.GetButtonDown("Fire1")) //!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W) &&
+        if (Input.GetButtonDown("Fire1") && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)) //!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W) &&
         {
             //if(nextAttackTime >= 3)
             //{
@@ -39,6 +39,19 @@ public class PlayerCombat : MonoBehaviour
                 Debug.Log("Ataque de lado");
                 StickAttack(attackPoint);
                 //nextAttackTime = Time.time + 1f / attackRate;
+            //}
+        }
+        #endregion
+
+        #region Melee Up Attack
+        if (Input.GetButtonDown("Fire1") && Input.GetAxis("Vertical") > 0)
+        {
+            //if(nextAttackTime >= 3)
+            //{
+            //nextAttackTime = 0;
+            Debug.Log("Ataque hacia arriba");
+            StickAttack(attackPointUp);
+            //nextAttackTime = Time.time + 1f / attackRate;
             //}
         }
         #endregion

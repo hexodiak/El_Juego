@@ -36,10 +36,7 @@ public class PlayerStats : MonoBehaviour
 	//Health Potions
 	public void CurrentHealthPotions(int consumePotion)
     {
-		
 			Destroy(potionsArray[consumePotion].gameObject);
-        
-		
     }
 
     void Update()

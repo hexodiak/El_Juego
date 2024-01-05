@@ -15,7 +15,7 @@ public class Playermovement : MonoBehaviour
     private bool crounch; // identificador de estar agachado funciona junto con el groundcheck
 
     
-    private float jumpingPower = 10f; // Potencia de salto
+    private float jumpingPower = 9.5f; // Potencia de salto
     //Prueba para salto segun apretada la tecla
     public float jumpStartTime; //prueba
     private float jumpTime; //prueba
