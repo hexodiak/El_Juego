@@ -10,10 +10,7 @@ public class PlayerStats : MonoBehaviour
 	public Slider healthBarPlayer;
     int maxHealth = 50;
 	int currentHealth;
-	//HealthPotions
-	public GameObject[] potionsArray;
-	private int countPotions;
-	int healing = 10;
+	
 
 	//Damage
 	int swordDamage = 5;
@@ -33,56 +30,11 @@ public class PlayerStats : MonoBehaviour
 
 	}
 
-	//Health Potions
-	public void CurrentHealthPotions(int consumePotion)
-    {
-			Destroy(potionsArray[consumePotion].gameObject);
-    }
+	
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))//al inserta la tecla E se toma la pocion que restaura vida y quita una
-        {
-			if(countPotions != 0)
-            {
-				if(currentHealth == maxHealth)
-				{
-					//sonido
-					Debug.Log("Tienes toda la vida, no puedes usar otra pocion");
-					
-				}
-				else
-				{
-					currentHealth += healing;
-
-					if (currentHealth > maxHealth)
-					{
-						currentHealth = maxHealth;//sumo la cantidad que cura
-						SetHealth(currentHealth);//se setea en la barra el healing de la pocion
-						countPotions -= 1;
-						CurrentHealthPotions(countPotions);//se consume una pocion, menos una pocion
-						
-					}
-					else
-					{
-						SetHealth(currentHealth);//se setea en la barra el healing de la pocion
-						countPotions -= 1;
-						CurrentHealthPotions(countPotions);//se consume una pocion, menos una pocion
-						
-					}
-				
-			
-                }
-
-            }
-            else
-            {
-				//sonido
-				Debug.Log("Te quedaste sin pociones");
-			}
-			
-
-		}
+        
     }
 
 
@@ -91,7 +43,7 @@ public class PlayerStats : MonoBehaviour
 	{
 		currentHealth = maxHealth;//medir la vida maxima con la actual, se puede trackear para el guardado
 		SetMaxHealth(maxHealth);//se hace el set con respecto a la vida en la barra UI
-		countPotions = potionsArray.Length;
+		
 
 	}
 

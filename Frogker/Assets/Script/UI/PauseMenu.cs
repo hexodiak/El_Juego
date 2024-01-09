@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;//para hacer el scroll de los gameobjets botones 
 
 public class PauseMenu : MonoBehaviour
 {
+    #region Variables
     [Header("Menu controls")]
     [SerializeField] private GameObject _mainMenuCanvasGO;
     [SerializeField] private GameObject _settingsCanvasGO;
@@ -19,6 +20,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _settingsMenuFirst;
 
     private bool isPaused;
+
+
+    #endregion
+
     private void Start()
     {
         _mainMenuCanvasGO.SetActive(false);
