@@ -15,29 +15,26 @@ public class Lonnie : MonoBehaviour
 
     //seconds to wait
     [SerializeField] private float speed;
-    float counterNextMove;
+    float counterNextMove = 0f;
     int nextSpawn;
     bool next;
+    private Vector2 velocity;
 
     #endregion
 
     #region Start and Update to start attacks
     void Start()
     {
-        next = true;
+        rb = GetComponent<Rigidbody2D>();
+        velocity = new Vector2(1.75f, 1.1f);
     }
 
 
+    
+
     void Update()
     {
-        counterNextMove += Time.deltaTime;
-        if (counterNextMove >= 1)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, spawnOne.transform.position, speed * Time.deltaTime);
-            
-            nextSpawn = 0;
-        }
-        
+        rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
     }
 
     #endregion
@@ -51,20 +48,20 @@ public class Lonnie : MonoBehaviour
         if (nextSpawn == 1)
         {
             transform.position = Vector3.MoveTowards(transform.position, spawnOne.transform.position, speed * Time.deltaTime);
-            counterNextMove = 0;
+            //counterNextMove = 0;
             nextSpawn = 0;
             next = true;
         }
         if (nextSpawn == 2)
         {
             transform.position = Vector3.MoveTowards(transform.position, spawnTwo.transform.position, speed * Time.deltaTime);
-            counterNextMove = 0;
+            //counterNextMove = 0;
             nextSpawn = 0;
         }
         if (nextSpawn == 3)
         {
             transform.position = Vector3.MoveTowards(transform.position, spawnThree.transform.position, speed * Time.deltaTime);
-            counterNextMove = 0;
+            //counterNextMove = 0;
             nextSpawn = 0;
         }
     }
