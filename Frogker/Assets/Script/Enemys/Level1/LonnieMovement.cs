@@ -7,22 +7,44 @@ public class LonnieMovement : StateMachineBehaviour
 
     //Idle
 
-
     Transform SpawnPoint1;
-    Transform player;
-    Lonnie lonnie;
+    Transform SpawnPoint2;
+    Transform SpawnPoint3;
+    Transform point;
+       
 
     Rigidbody2D rb;
-    private float speed = 4f;
-    private int num = 1;
+    private float speed = 10f;
+    private int num;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         SpawnPoint1 = GameObject.FindGameObjectWithTag("SpawnPoint1").transform;
+        SpawnPoint2 = GameObject.FindGameObjectWithTag("SpawnPoint2").transform;
+        SpawnPoint3 = GameObject.FindGameObjectWithTag("SpawnPoint3").transform;
         rb = animator.GetComponent<Rigidbody2D>();
 
-        
+        num = Random.Range(0, 4);
+
+        if (num == 0)
+        {
+
+            point = SpawnPoint1;
+        }
+        if (num == 1)
+        {
+
+            point = SpawnPoint1;
+        }
+        if (num == 2)
+        {
+            point = SpawnPoint2;
+        }
+        if (num == 3)
+        {
+            point = SpawnPoint3;
+        }
 
     }
 
@@ -30,10 +52,10 @@ public class LonnieMovement : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        rb.position = Vector3.MoveTowards(rb.position, SpawnPoint1.position, speed * Time.deltaTime);
+        rb.position = Vector3.MoveTowards(rb.position, point.position, speed * Time.deltaTime);
         rb.gravityScale = 0;
 
-        if (rb.position.x == SpawnPoint1.position.x)//condicion para empezar la primera parte del ataque
+        if (rb.position.x == point.position.x)//condicion para empezar la primera parte del ataque
         {
             animator.SetTrigger("Attack");
         }

@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 568009109}
   m_Layer: 0
   m_Name: Point3
-  m_TagString: Untagged
+  m_TagString: SpawnPoint3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3926,7 +3926,7 @@ GameObject:
   - component: {fileID: 1638230622}
   m_Layer: 0
   m_Name: Point2
-  m_TagString: Untagged
+  m_TagString: SpawnPoint2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4122,6 +4122,7 @@ GameObject:
   - component: {fileID: 1979544949}
   - component: {fileID: 1979544950}
   - component: {fileID: 1979544951}
+  - component: {fileID: 1979544953}
   - component: {fileID: 1979544952}
   m_Layer: 7
   m_Name: Lonnie
@@ -4304,12 +4305,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25891be66a2b6f848a1574acf15b3829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOne: {fileID: 0}
-  spawnTwo: {fileID: 0}
-  spawnThree: {fileID: 0}
   rb: {fileID: 1979544950}
-  speed: 0
-  player: {fileID: 2031230324}
+  animator: {fileID: 1979544949}
+--- !u!114 &1979544953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979544944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8330eed527f9040b402c0c05340efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDamage: 3
+  maxHealth: 50
 --- !u!1 &2024953394
 GameObject:
   m_ObjectHideFlags: 0

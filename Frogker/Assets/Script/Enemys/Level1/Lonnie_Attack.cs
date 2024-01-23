@@ -10,9 +10,10 @@ public class Lonnie_Attack : StateMachineBehaviour
     Transform player;
 
     Rigidbody2D rb;
-    private float speed = 4f;
+    private float speed = 7f;
     Vector3 lastPlayerPosition;
 
+    Collision2D c;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -28,6 +29,8 @@ public class Lonnie_Attack : StateMachineBehaviour
     {
         rb.position = Vector3.MoveTowards(rb.position, lastPlayerPosition, speed * Time.deltaTime);
         rb.gravityScale = 0;
+
+        
 
     }
 
