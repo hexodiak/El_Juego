@@ -4122,6 +4122,7 @@ GameObject:
   - component: {fileID: 1979544949}
   - component: {fileID: 1979544950}
   - component: {fileID: 1979544951}
+  - component: {fileID: 1979544952}
   m_Layer: 7
   m_Name: Lonnie
   m_TagString: Enemy
@@ -4291,6 +4292,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.45, y: 0.65}
   m_EdgeRadius: 0
+--- !u!114 &1979544952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979544944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25891be66a2b6f848a1574acf15b3829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnOne: {fileID: 0}
+  spawnTwo: {fileID: 0}
+  spawnThree: {fileID: 0}
+  rb: {fileID: 1979544950}
+  speed: 0
+  player: {fileID: 2031230324}
 --- !u!1 &2024953394
 GameObject:
   m_ObjectHideFlags: 0

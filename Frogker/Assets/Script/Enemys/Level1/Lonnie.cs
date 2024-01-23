@@ -20,13 +20,14 @@ public class Lonnie : MonoBehaviour
     bool next;
     private Vector2 velocity;
 
+    public Transform player;
     #endregion
 
     #region Start and Update to start attacks
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        velocity = new Vector2(1.75f, 1.1f);
+        
     }
 
 
@@ -34,13 +35,13 @@ public class Lonnie : MonoBehaviour
 
     void Update()
     {
-        rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+        
     }
 
     #endregion
 
     #region Method of lines of attacks
-    private void AttacksOrder()
+    public void AttacksOrder()
     {
         next = false;
         nextSpawn = Random.Range(1, 3);
@@ -65,10 +66,15 @@ public class Lonnie : MonoBehaviour
             nextSpawn = 0;
         }
     }
-    #endregion
 
-    #region waiting seconds
-    public IEnumerator waitSeconds()//Metodo para esperar segundos
+    public void Follow()
+    {
+        rb.position = Vector3.MoveTowards(rb.position, player.position, speed * Time.deltaTime);
+    }
+        #endregion
+
+        #region waiting seconds
+        public IEnumerator waitSeconds()//Metodo para esperar segundos
     {
         Debug.Log("pasaron 3 segundos");
         yield return new WaitForSeconds(3);
