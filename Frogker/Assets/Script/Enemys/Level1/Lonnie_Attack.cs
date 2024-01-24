@@ -28,7 +28,7 @@ public class Lonnie_Attack : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rb.position = Vector3.MoveTowards(rb.position, lastPlayerPosition, speed * Time.deltaTime);
-        rb.gravityScale = 0;
+        rb.gravityScale = 0.1f;
 
         
 

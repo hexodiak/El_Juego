@@ -51,9 +51,9 @@ public class LonnieMovement : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        rb.position = Vector3.MoveTowards(rb.position, point.position, speed * Time.deltaTime);
         rb.gravityScale = 0;
+        rb.position = Vector3.MoveTowards(rb.position, point.position, speed * Time.deltaTime);
+        
 
         if (rb.position.x == point.position.x)//condicion para empezar la primera parte del ataque
         {
