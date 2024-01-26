@@ -5,9 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - SpawnPoint1
-  - SpawnPoint2
-  - SpawnPoint3
   layers:
   - Default
   - TransparentFX

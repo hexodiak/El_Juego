@@ -10,6 +10,13 @@ public class Lonnie : MonoBehaviour
     public Rigidbody2D rb;
     PlayerStats playerStats;
     public Animator animator;
+
+    public Transform Point1;
+    public Transform Point2;
+    public Transform Point3;
+
+    public Transform beakPoint;
+    public GameObject beak;
     #endregion
 
     #region Start and Update to start attacks
@@ -45,6 +52,12 @@ public class Lonnie : MonoBehaviour
     #endregion
 
     #region Method of lines of attacks
+
+    public void BeakAttack()
+    {
+        Instantiate(beak, beakPoint.position, beakPoint.rotation);
+    }
+
 
     #endregion
 

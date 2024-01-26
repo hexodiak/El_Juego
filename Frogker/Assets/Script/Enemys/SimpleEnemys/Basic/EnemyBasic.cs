@@ -67,4 +67,29 @@ public class EnemyBasic : MonoBehaviour
         Debug.Log("Muerto");
     }
     #endregion
+
+    #region Flip enemy towards the player
+
+    public Transform player1;
+    public bool isFlipped = false;
+
+    public void LookAtPlayer()
+    {
+        Vector3 flipped = transform.localScale;
+        flipped.z *= -1f;
+
+        if (transform.position.x < player1.position.x && isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = false;
+        }
+        else if (transform.position.x > player1.position.x && !isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = true;
+        }
+    }
+    #endregion
 }

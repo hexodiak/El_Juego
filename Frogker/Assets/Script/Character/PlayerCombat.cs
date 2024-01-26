@@ -26,8 +26,6 @@ public class PlayerCombat : MonoBehaviour
 
     #endregion
 
-
-
     void Update()
     {
         #region Melee side attack

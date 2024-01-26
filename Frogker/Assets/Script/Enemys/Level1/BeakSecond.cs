@@ -2,49 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lonnie_Attack : StateMachineBehaviour
+public class BeakSecond : StateMachineBehaviour
 {
-    //Attack
-    
-    
-    Transform player;
+    Lonnie lonnie;
     EnemyBasic enemyBasic;
 
-    Rigidbody2D rb;
-    private float speed = 7f;
-    Vector3 lastPlayerPosition;
 
-    Collision2D c;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        lastPlayerPosition = player.position;
-        rb = animator.GetComponent<Rigidbody2D>();
+        lonnie = animator.GetComponent<Lonnie>();
         enemyBasic = animator.GetComponent<EnemyBasic>();
-
-
+        lonnie.BeakAttack();
     }
+
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemyBasic.LookAtPlayer();
-
-        rb.position = Vector3.MoveTowards(rb.position, lastPlayerPosition, speed * Time.deltaTime);
         
-
-
     }
-
-
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Attack");
-        rb.gravityScale = 1f;
+        animator.ResetTrigger("BeakSecondAttack");
     }
 
-    
+
 }
