@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Feather : MonoBehaviour
 {
-    //Variables
+    #region Variables
     float speed = 10f;
     public Rigidbody2D rb;
     int damage = 5;
 
+    #endregion
 
+    #region Start move and collison to hit enemy
     void Start()
     {
         rb.velocity = transform.right * speed;
@@ -25,5 +27,5 @@ public class Feather : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
+    #endregion
 }
