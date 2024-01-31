@@ -79,15 +79,16 @@ public class Playermovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal"); // X | -1 0 1
         _animation.SetFloat("Speed", Mathf.Abs(horizontal));//running animation
 
-        _animation.SetBool("isJumping", !isGrounded());
+        _animation.SetBool("isJumping", isJumping);//!isGrounded()
         _animation.SetBool("isSliding", isWallSliding);
+        //_animation.SetBool("is", isWallSliding);
 
         if (!isGrounded())
         {
             if (Input.GetMouseButton(0))
             {
-                Debug.Log("Air Attack");
-                _animation.SetTrigger("attack");
+                //Debug.Log("Air Attack");
+                //_animation.SetTrigger("attack");
             }
 
         }
