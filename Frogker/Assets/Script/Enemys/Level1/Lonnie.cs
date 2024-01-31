@@ -45,11 +45,11 @@ public class Lonnie : MonoBehaviour
             playerStats.TakeDamagePlayer(5);
             animator.SetTrigger("Idle");
         }
-        if (collision.gameObject.layer == 3)//toca pared
+        if (collision.gameObject.layer == 3)//touches floor
         {
             animator.SetTrigger("Idle");
         }
-        if (collision.gameObject.layer == 6)//toca piso
+        if (collision.gameObject.layer == 6)//touches wall
         {
             animator.SetTrigger("Idle");
         }
