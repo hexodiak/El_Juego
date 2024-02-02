@@ -142,9 +142,10 @@ public class Playermovement : MonoBehaviour
 
         if (Input.GetButtonUp("Jump"))
         {
-            //_animation.SetBool("isFalling", isFalling);
             isJumping = false;
         }
+        _animation.SetFloat("yVelocity", RB.velocity.y);
+
 
 
 
