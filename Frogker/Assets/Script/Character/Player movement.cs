@@ -41,7 +41,7 @@ public class Playermovement : MonoBehaviour
     private bool isDashing;
     private float dashinPower = 5f;
     private float dashinTime = 0.2f;
-    private float dashinCooldown = 0.5f;
+    private float dashinCooldown = 0.3f;
 
     #endregion
 
@@ -146,6 +146,7 @@ public class Playermovement : MonoBehaviour
         }
 
 
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
@@ -192,7 +193,7 @@ public class Playermovement : MonoBehaviour
         canDash = false;
         isDashing = true;
         float originalGravity = RB.gravityScale;
-        RB.gravityScale = 2f;
+        RB.gravityScale = 1f;
         RB.velocity = new Vector2(transform.localScale.x * dashinPower, 1f);
         tr.emitting = true;
         _animation.SetBool("isDashing", true);
@@ -273,7 +274,10 @@ public class Playermovement : MonoBehaviour
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
-            transform.Rotate(0f, 180f, 0);
+            //transform.Rotate(0f, 180f, 0);
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
 
             if (isGrounded())
             {
