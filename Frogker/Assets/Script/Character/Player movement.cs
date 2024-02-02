@@ -17,9 +17,9 @@ public class Playermovement : MonoBehaviour
     
     private float jumpingPower = 9.5f; // Potencia de salto
     //Prueba para salto segun apretada la tecla
-    public float jumpStartTime; //prueba
-    private float jumpTime; //prueba
-    private bool isJumping; //prueba
+    public float jumpStartTime; 
+    private float jumpTime; 
+    private bool isJumping;
 
     #endregion
 
@@ -41,7 +41,7 @@ public class Playermovement : MonoBehaviour
     private bool isDashing;
     private float dashinPower = 5f;
     private float dashinTime = 0.2f;
-    private float dashinCooldown = 0.3f;
+    private float dashinCooldown = 0.1f;
 
     #endregion
 
@@ -79,7 +79,7 @@ public class Playermovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal"); // X | -1 0 1
         _animation.SetFloat("Speed", Mathf.Abs(horizontal));//running animation
 
-        _animation.SetBool("isJumping", isJumping);//!isGrounded()
+        _animation.SetBool("isJumping", !isGrounded());//!isGrounded()
         _animation.SetBool("isSliding", isWallSliding);
         //_animation.SetBool("is", isWallSliding);
 
@@ -142,6 +142,7 @@ public class Playermovement : MonoBehaviour
 
         if (Input.GetButtonUp("Jump"))
         {
+            //_animation.SetBool("isFalling", isFalling);
             isJumping = false;
         }
 
