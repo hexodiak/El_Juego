@@ -32,7 +32,10 @@ public class Lonnie_Attack : StateMachineBehaviour
         enemyBasic.LookAtPlayer();
 
         rb.position = Vector3.MoveTowards(rb.position, lastPlayerPosition, speed * Time.deltaTime);
-        
+        if (rb.position.x == lastPlayerPosition.x)//condicion para empezar la primera parte del ataque
+        {
+            rb.gravityScale = 5f;
+        }
 
 
     }
@@ -41,7 +44,7 @@ public class Lonnie_Attack : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.ResetTrigger("Attack");
-        rb.gravityScale = 1f;
+        
     }
 
     
