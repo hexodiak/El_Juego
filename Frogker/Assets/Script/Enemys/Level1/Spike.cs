@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Beak : MonoBehaviour
+public class Spike : MonoBehaviour
 {
     #region Variables
     public Animator animator;
@@ -14,7 +14,8 @@ public class Beak : MonoBehaviour
 
     private void Start()
     {
-        animator.SetTrigger("BeakLong");
+        //animator.SetTrigger("");
+        StartCoroutine(WaitAndDestroy(2.0f));
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,9 +28,15 @@ public class Beak : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
+
     }
 
+    IEnumerator WaitAndDestroy(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(gameObject);
+    }
 
     #endregion
 }

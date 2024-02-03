@@ -25,9 +25,13 @@ public class Lonnie : MonoBehaviour
     public GameObject wood;//gameobject of falling wood
 
 
-    [Header("Growing beak")]
-    public Transform beakPoint;//where beak starts
-    public GameObject beak;//long beak
+    [Header("Growing spike from floor")]
+    public Transform startSecondAttackPosition1;//where Lonnie has to go to start second attack
+    //public Transform startSecondAttackPosition2;//where Lonnie has to go to start second attack
+    public Transform spikePoint1;//where spike starts position one
+    public Transform spikePoint2;//where spike starts position two
+    public Transform spikePoint3;//where spike starts position three
+    public GameObject spike;//long spike itself
     
     #endregion
 
@@ -62,8 +66,10 @@ public class Lonnie : MonoBehaviour
 
     public void BeakAttack()
     {
-        //Instantiate the beak to grow from one side to another
-        Instantiate(beak, beakPoint.position, beakPoint.rotation);
+        //Instantiate the spikes to grow from the floor
+        Instantiate(spike, spikePoint1.position, spikePoint1.rotation);
+        Instantiate(spike, spikePoint2.position, spikePoint2.rotation);
+        Instantiate(spike, spikePoint3.position, spikePoint3.rotation);
 
         //Instantiate the wood in the droping positions
         Instantiate(wood, Wood1.position, Wood1.rotation);

@@ -28,7 +28,7 @@ public class LonnieMovement : StateMachineBehaviour
         SpawnPoint1 = lonnie.Point1;
         SpawnPoint2 = lonnie.Point2;
         SpawnPoint3 = lonnie.Point3;
-        
+        enemyBasic.LookAtPlayer();
 
         num = Random.Range(0, 4);
 
@@ -56,7 +56,6 @@ public class LonnieMovement : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyBasic.LookAtPlayer();
         rb.gravityScale = 0;
         rb.position = Vector3.MoveTowards(rb.position, point.position, speed * Time.deltaTime);
         

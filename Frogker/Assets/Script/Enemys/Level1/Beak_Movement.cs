@@ -8,7 +8,7 @@ public class Beak_Movement : StateMachineBehaviour
     Rigidbody2D rb;
     EnemyBasic enemyBasic;
     Lonnie lonnie;
-    Transform beakPosition;
+    Transform startSecondAttackPositionBM;
 
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -16,7 +16,7 @@ public class Beak_Movement : StateMachineBehaviour
         rb = animator.GetComponent<Rigidbody2D>();
         lonnie = animator.GetComponent<Lonnie>();
         enemyBasic = animator.GetComponent<EnemyBasic>();
-        beakPosition = lonnie.beakPoint; 
+        startSecondAttackPositionBM = lonnie.startSecondAttackPosition1;
 
 
     }
@@ -25,11 +25,11 @@ public class Beak_Movement : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
-        rb.position = Vector3.MoveTowards(rb.position, beakPosition.position, 9f * Time.deltaTime);
+        rb.position = Vector3.MoveTowards(rb.position, startSecondAttackPositionBM.position, 9f * Time.deltaTime);
 
-        if (rb.position.x == beakPosition.position.x)//condicion para empezar la primera parte del ataque
+        if (rb.position.x == startSecondAttackPositionBM.position.x)//condicion para empezar la primera parte del ataque
         {
-            enemyBasic.LookAtPlayer();
+            
             animator.SetTrigger("BeakSecondAttack");
         }
     }
@@ -37,7 +37,7 @@ public class Beak_Movement : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Beak");
+        
         
     }
 

@@ -21,7 +21,7 @@ public class Wood : MonoBehaviour
     {
         
         PlayerStats player = gameObject.GetComponent<PlayerStats>();
-        if (player != null)
+        if (collision.transform.name == "Player")
         {
             player.TakeDamagePlayer(damage);
         }
