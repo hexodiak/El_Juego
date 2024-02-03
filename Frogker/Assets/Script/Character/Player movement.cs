@@ -12,7 +12,10 @@ public class Playermovement : MonoBehaviour
     private float speed = 5f; // Velocidad total
     private bool isFacingRight = true; // Definir X
     private bool doubleJump; // Controla el segundo salto en el aire
-    private bool crounch; // identificador de estar agachado funciona junto con el groundcheck
+
+    //Crouch
+    private float m_CrouchSpeed = .36f;
+    private bool crounch;//identificador de estar agachado funciona junto con el groundcheck
 
     
     private float jumpingPower = 9.5f; // Potencia de salto
@@ -64,6 +67,9 @@ public class Playermovement : MonoBehaviour
     //Animations
     private Animator _animation;
     public ParticleSystem feetDust;
+
+    //Crouch boxcollider2d
+    public BoxCollider2D boxColliderToCrouch;//deactivate de upper collider to crouch
     #endregion
 
 
@@ -93,17 +99,25 @@ public class Playermovement : MonoBehaviour
 
         }
 
+        #region Crouch
         if (Input.GetKeyDown(KeyCode.S))
         {
             crounch = true;
-            _animation.SetBool("Crawl", true);
+            boxColliderToCrouch.enabled = false;
+            horizontal *= m_CrouchSpeed;
+            _animation.SetBool("Crouch", true);
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
             crounch = false;
-            _animation.SetBool("Crawl", false);
+            boxColliderToCrouch.enabled = true;
+            _animation.SetBool("Crouch", false);
         }
 
+
+        #endregion
+
+        #region Jump
         if (isGrounded() && !Input.GetButton("Jump"))
         {
             doubleJump = false;           
@@ -147,7 +161,7 @@ public class Playermovement : MonoBehaviour
         _animation.SetFloat("yVelocity", RB.velocity.y);
 
 
-
+        #endregion
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
