@@ -13,19 +13,20 @@ public class Wood : MonoBehaviour
     #region Start move down and collison to eliminate on his own
     void Start()
     {
-        rb.gravityScale = 4;
+        rb.gravityScale = 4f;
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        //Debug.Log(collision.name);
         PlayerStats player = gameObject.GetComponent<PlayerStats>();
-        if (collision.transform.name == "Player")
+        if (collision.tag == "Player")
         {
-            player.TakeDamagePlayer(damage);
+            //player.TakeDamagePlayer(damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     #endregion
 }

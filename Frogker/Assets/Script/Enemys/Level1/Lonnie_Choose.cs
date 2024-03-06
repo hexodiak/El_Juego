@@ -9,16 +9,11 @@ public class Lonnie_Choose : StateMachineBehaviour
     private int num;//to let know which attack goes next
     private int side;//to let know which attack goes next
 
-    
-    Rigidbody2D rb;
-    GameObject beakPoint;
-
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rb = animator.GetComponent<Rigidbody2D>();
+        
         num = Random.Range(0, 2);
-        beakPoint = GameObject.Find("SidePoint1");
 
         if (num == 0)
         {

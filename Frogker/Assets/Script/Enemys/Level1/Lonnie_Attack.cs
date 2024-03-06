@@ -34,7 +34,7 @@ public class Lonnie_Attack : StateMachineBehaviour
         rb.position = Vector3.MoveTowards(rb.position, lastPlayerPosition, speed * Time.deltaTime);
         if (rb.position.x == lastPlayerPosition.x)//condicion para empezar la primera parte del ataque
         {
-            rb.gravityScale = 5f;
+            rb.gravityScale = 1f;
         }
 
 

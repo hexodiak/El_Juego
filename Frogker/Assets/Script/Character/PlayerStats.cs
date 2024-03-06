@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     #region Variables
 	//Health
 	public Slider healthBarPlayer;
-    int maxHealth = 50;
+    int maxHealth = 20;
 	int currentHealth;
 	
 

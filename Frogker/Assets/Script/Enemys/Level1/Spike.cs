@@ -6,7 +6,7 @@ public class Spike : MonoBehaviour
 {
     #region Variables
     public Animator animator;
-    Vector2 temp;
+    Vector3 temp;
     int damage = 5;
     #endregion
 
@@ -20,7 +20,7 @@ public class Spike : MonoBehaviour
 
     private void Update()
     {
-        //temp = transform.localScale;
+        ///temp = transform.localScale;
         //temp.y *= Time.deltaTime;
         //transform.localScale = temp;
     }
@@ -28,10 +28,10 @@ public class Spike : MonoBehaviour
     #endregion
 
     #region CollisionEnter detection and wait seconds method
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerStats player = gameObject.GetComponent<PlayerStats>();
-        if (player != null)
+        if (collision.transform.name == "Player")
         {
             player.TakeDamagePlayer(damage);
         }
