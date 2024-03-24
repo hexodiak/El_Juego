@@ -8,8 +8,9 @@ public class EnemyBasic : MonoBehaviour
     //Variables de unity
     PlayerStats player;
 
+
     //Variables de script
-    public int enemyDamage = 3;
+    public int enemyDamage = 5;
     public int maxHealth = 50;
     int currentHealth;
      
@@ -25,10 +26,16 @@ public class EnemyBasic : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
             player.TakeDamagePlayer(enemyDamage);
             Debug.Log("Golpea a " + collision.gameObject.name + enemyDamage);
+            //this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            //StartCoroutine(EnableBackBoxCollider(2.0f));
         }
 
     }
-
+    IEnumerator EnableBackBoxCollider(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+    }
     #endregion
 
     #region Damage to enemy

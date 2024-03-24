@@ -212,7 +212,14 @@ public class Playermovement : MonoBehaviour
         isDashing = true;
         float originalGravity = RB.gravityScale;
         RB.gravityScale = 1f;
-        RB.velocity = new Vector2(transform.localScale.x * dashinPower, 1f);
+        if (transform.rotation.y == -180)
+        {
+            RB.velocity = new Vector2(transform.localScale.x * dashinPower * -1, 1f); //* -1
+        }
+        else
+        {
+            RB.velocity = new Vector2(transform.localScale.x * dashinPower, 1f);
+        }
         tr.emitting = true;
         _animation.SetBool("isDashing", true);
         yield return new WaitForSeconds(dashinTime);

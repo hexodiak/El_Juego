@@ -43,20 +43,19 @@ public class Lonnie : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 8)//toca al jugador
-        {
-            playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-            playerStats.TakeDamagePlayer(5);
-            animator.SetTrigger("Idle");
-        }
-        if (collision.gameObject.layer == 3)//touches floor
-        {
-            animator.SetTrigger("Idle");
-        }
-        if (collision.gameObject.layer == 6)//touches wall
-        {
-            animator.SetTrigger("Idle");
-        }
+        //if (collision.gameobject.layer == 8)//toca al jugador
+        //{
+
+        //    animator.settrigger("idle");
+        //}
+        //if (collision.gameobject.layer == 3)//touches floor
+        //{
+        //    animator.settrigger("idle");
+        //}
+        //if (collision.gameobject.layer == 6)//touches wall
+        //{
+        //    animator.settrigger("idle");
+        //}
 
     }
 

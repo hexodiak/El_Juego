@@ -19,11 +19,12 @@ public class Wood : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(collision.name);
-        PlayerStats player = gameObject.GetComponent<PlayerStats>();
+        ;
+        PlayerStats player = collision.GetComponent<PlayerStats>();
         if (collision.tag == "Player")
         {
-            //player.TakeDamagePlayer(damage);
+            //Debug.Log(collision.name);
+            player.TakeDamagePlayer(damage);
             Destroy(gameObject);
         }
         //Destroy(gameObject);

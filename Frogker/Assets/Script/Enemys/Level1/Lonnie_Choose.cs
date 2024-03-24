@@ -12,12 +12,14 @@ public class Lonnie_Choose : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
-        num = Random.Range(0, 2);
+
+        //num = Random.Range(0, 2);
+        num = 0;
 
         if (num == 0)
         {
-            side = num;
+            //side = num;
+            animator.SetTrigger("Run");
         }
         if (num == 1)
         {
@@ -32,7 +34,7 @@ public class Lonnie_Choose : StateMachineBehaviour
     {
         if (side == 0)
         {
-            animator.SetTrigger("Run");
+            //animator.SetTrigger("Run");
         }
         if (side == 1)
         {
