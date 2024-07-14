@@ -21,6 +21,8 @@ public class Lonnie_Attack : StateMachineBehaviour
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lastPlayerPosition = player.position;
+        //lastPlayerPosition = new Vector3(lastPlayerPosition.x*2, lastPlayerPosition.y * 2, lastPlayerPosition.z);
+        
         rb = animator.GetComponent<Rigidbody2D>();
         enemyBasic = animator.GetComponent<EnemyBasic>();
 
@@ -43,7 +45,7 @@ public class Lonnie_Attack : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //animator.ResetTrigger("Attack");
+        animator.ResetTrigger("Attack");
         
     }
 
