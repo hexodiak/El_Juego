@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _climbMenu;
     [SerializeField] private GameObject _optionsMenu;
     [SerializeField] private GameObject _extrasMenu;
+
+    [Header("Options to scroll")]
+    [SerializeField] private GameObject _mainMenuFirst;//Main menu selects climb as it first option
+    [SerializeField] private GameObject _optionsMenuFirst;//In setting menu selects sound as it first option
 
 
     #endregion
@@ -29,6 +34,8 @@ public class MainMenu : MonoBehaviour
         _climbMenu.SetActive(false);
         _optionsMenu.SetActive(false);
         _extrasMenu.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
     }
 
     #endregion
@@ -41,21 +48,26 @@ public class MainMenu : MonoBehaviour
         _optionsMenu.SetActive(false);
         _extrasMenu.SetActive(false);
         _mainMenu.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
     }
 
-    public void Climb() 
+    private void Climb() 
     {
         _mainMenu.SetActive(false);
         _climbMenu.SetActive(true);
     }
 
-    public void Options()
+    private void Options()
     {
         _mainMenu.SetActive(false);
         _optionsMenu.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_optionsMenuFirst);
+
     }
 
-    public void Extras()
+    private void Extras()
     {
         _mainMenu.SetActive(false);
         _extrasMenu.SetActive(true);
