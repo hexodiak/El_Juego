@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;//scenes
 
 public class MainMenu : MonoBehaviour
 {
@@ -56,6 +57,8 @@ public class MainMenu : MonoBehaviour
     {
         _mainMenu.SetActive(false);
         _climbMenu.SetActive(true);
+
+        SceneManager.LoadScene("Main");
     }
 
     private void Options()
@@ -73,7 +76,11 @@ public class MainMenu : MonoBehaviour
         _extrasMenu.SetActive(true);
     }
 
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    
 
     #endregion
 }
