@@ -32,6 +32,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.Escape) && _climbMenu == true) Menu();
+
         if (InputManager.instance.MenuOpenCloseInput)
         {
             if (!isPaused)
@@ -79,8 +81,9 @@ public class PauseMenu : MonoBehaviour
     }
     private void OpenMainMenu() 
     {
-        _mainMenuCanvasGO.SetActive(true);
         _settingsCanvasGO.SetActive(false);
+        _mainMenuCanvasGO.SetActive(true);
+        
 
         EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
     }
@@ -88,15 +91,18 @@ public class PauseMenu : MonoBehaviour
 
     public void Options()
     {
-        _settingsCanvasGO.SetActive(true);
         _mainMenuCanvasGO.SetActive(false);
+        _settingsCanvasGO.SetActive(true);
+        
 
         EventSystem.current.SetSelectedGameObject(_settingsMenuFirst);
     }
 
     public void GoToMenu()
     {
-        
+        playermovement.enabled = true;
+        playercombat.enabled = true;
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
