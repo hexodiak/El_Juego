@@ -32,7 +32,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape) && _climbMenu == true) Menu();
+        //if (Input.GetKeyDown(KeyCode.Escape) && isPaused == false) Pause();
+        //if (Input.GetKeyDown(KeyCode.Escape) && isPaused == true && _mainMenuCanvasGO == true) Resume();
 
         if (InputManager.instance.MenuOpenCloseInput)
         {
