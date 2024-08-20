@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;//scenes
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;//scenes
 
 public class MainMenu : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _mainMenuFirst;//Main menu selects climb as it first option
     [SerializeField] private GameObject _optionsMenuFirst;//In setting menu selects sound as it first option
 
-
+    
     #endregion
 
     #region Start-Update
@@ -35,14 +36,18 @@ public class MainMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && _optionsMenu == true) Menu();
         if (Input.GetKeyDown(KeyCode.Escape) && _extrasMenu == true) Menu();
 
-        //if (EventSystem.current.currentSelectedGameObject == _audioMenu) _audioMenu.SetActive(true);
-        if (EventSystem.current.currentSelectedGameObject == _videoMenu) _videoMenu.SetActive(true);
-        if (EventSystem.current.currentSelectedGameObject == _controlsMenu) _controlsMenu.SetActive(true);
+        
+
     }
+
     private void Start()
     {
+        //Menu
         Menu();
         EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
+
+
+
     }
 
     #endregion
