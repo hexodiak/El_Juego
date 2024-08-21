@@ -19,7 +19,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _audioMenu;
     [SerializeField] private GameObject _videoMenu;
     [SerializeField] private GameObject _controlsMenu;
-    [SerializeField] private GameObject _definirMenu;
 
     [Header("Options to scroll")]
     [SerializeField] private GameObject _mainMenuFirst;//Main menu selects climb as it first option
@@ -65,7 +64,6 @@ public class MainMenu : MonoBehaviour
         _audioMenu.SetActive(false);
         _videoMenu.SetActive(false);
         _controlsMenu.SetActive(false);
-        _definirMenu.SetActive(false);
 
 
         _mainMenu.SetActive(true);
