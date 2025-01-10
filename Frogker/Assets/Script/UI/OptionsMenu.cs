@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class AudioButton : MonoBehaviour
+public class OptionsMenu : MonoBehaviour
 {
-    [Header("Menu opciones")]
+    [Header("Opciones audio")]
     [SerializeField] private GameObject _audioOptions;
     [SerializeField] private GameObject _audioOptionsFirst;
 
@@ -19,7 +18,4 @@ public class AudioButton : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_audioOptionsFirst);
 
     }
-
-    
-
 }

@@ -9,20 +9,22 @@ using UnityEngine.UI;//scenes
 public class MainMenu : MonoBehaviour
 {
     #region Variables
-    [Header("Menu principal")]
+    [Header("Main menu")]
     [SerializeField] private GameObject _mainMenu;
     [SerializeField] private GameObject _climbMenu;
     [SerializeField] private GameObject _optionsMenu;
     [SerializeField] private GameObject _extrasMenu;
 
-    [Header("Menu opciones")]
+    [Header("Menu options")]
     [SerializeField] private GameObject _audioMenu;
+    [SerializeField] private GameObject _audioOptionsMenu;
     [SerializeField] private GameObject _videoMenu;
     [SerializeField] private GameObject _controlsMenu;
 
     [Header("Options to scroll")]
     [SerializeField] private GameObject _mainMenuFirst;//Main menu selects climb as it first option
-    [SerializeField] private GameObject _optionsMenuFirst;//In setting menu selects sound as it first option
+    [SerializeField] private GameObject _optionsMenuFirst;//In setting menu selects audio as it first option
+    [SerializeField] private GameObject _audioMenuFirst;//In setting menu selects music as it first option
 
     
     #endregion
@@ -34,8 +36,7 @@ public class MainMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && _climbMenu == true) Menu();
         if (Input.GetKeyDown(KeyCode.Escape) && _optionsMenu == true) Menu();
         if (Input.GetKeyDown(KeyCode.Escape) && _extrasMenu == true) Menu();
-
-        
+        if (Input.GetKeyDown(KeyCode.Escape) && _audioOptionsMenu == true) optionsOut();
 
     }
 
@@ -43,9 +44,8 @@ public class MainMenu : MonoBehaviour
     {
         //Menu
         Menu();
+
         EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
-
-
 
     }
 
@@ -60,10 +60,7 @@ public class MainMenu : MonoBehaviour
         _optionsMenu.SetActive(false);
         _extrasMenu.SetActive(false);
 
-        //menu de opciones
-        _audioMenu.SetActive(false);
-        _videoMenu.SetActive(false);
-        _controlsMenu.SetActive(false);
+        
 
 
         _mainMenu.SetActive(true);
@@ -81,8 +78,9 @@ public class MainMenu : MonoBehaviour
     private void Options()
     {
         _mainMenu.SetActive(false);
+        _audioOptionsMenu.SetActive(false);
         _optionsMenu.SetActive(true);
-        _audioMenu.SetActive(true);
+        
 
         EventSystem.current.SetSelectedGameObject(_optionsMenuFirst);
 
@@ -102,12 +100,29 @@ public class MainMenu : MonoBehaviour
 
     #endregion
 
+    #region Audio options
+    public void audioOptionsMenu()
+    {
+        _optionsMenu.SetActive(false);
+        _audioOptionsMenu.SetActive(true);
 
-    #region Settings Interaction
+        EventSystem.current.SetSelectedGameObject(_audioMenuFirst);
+
+    }
+
+    #endregion
+
+    #region Salir con escape
+    private void optionsOut()
+    {
+        _mainMenu.SetActive(false);
+        _audioOptionsMenu.SetActive(false);
+        _audioMenu.SetActive(false);
+        _optionsMenu.SetActive(true);
 
 
+        EventSystem.current.SetSelectedGameObject(_optionsMenuFirst);
 
-
-
+    }
     #endregion
 }
