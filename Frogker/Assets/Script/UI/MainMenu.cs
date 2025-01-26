@@ -15,18 +15,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _optionsMenu;
     [SerializeField] private GameObject _extrasMenu;
 
-    [Header("Menu options")]
-    [SerializeField] private GameObject _audioMenu;
-    [SerializeField] private GameObject _audioOptionsMenu;
-    [SerializeField] private GameObject _videoMenu;
-    [SerializeField] private GameObject _controlsMenu;
-
     [Header("Options to scroll")]
     [SerializeField] private GameObject _mainMenuFirst;//Main menu selects climb as it first option
     [SerializeField] private GameObject _optionsMenuFirst;//In setting menu selects audio as it first option
-    [SerializeField] private GameObject _audioMenuFirst;//In setting menu selects music as it first option
 
-    
+
     #endregion
 
     #region Start-Update
@@ -36,7 +29,7 @@ public class MainMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && _climbMenu == true) Menu();
         if (Input.GetKeyDown(KeyCode.Escape) && _optionsMenu == true) Menu();
         if (Input.GetKeyDown(KeyCode.Escape) && _extrasMenu == true) Menu();
-        if (Input.GetKeyDown(KeyCode.Escape) && _audioOptionsMenu == true) optionsOut();
+        //if (Input.GetKeyDown(KeyCode.Escape) && _audioOptionsMenu == true) optionsOut();
 
     }
 
@@ -78,7 +71,6 @@ public class MainMenu : MonoBehaviour
     private void Options()
     {
         _mainMenu.SetActive(false);
-        _audioOptionsMenu.SetActive(false);
         _optionsMenu.SetActive(true);
         
 
@@ -100,29 +92,7 @@ public class MainMenu : MonoBehaviour
 
     #endregion
 
-    #region Audio options
-    public void audioOptionsMenu()
-    {
-        _optionsMenu.SetActive(false);
-        _audioOptionsMenu.SetActive(true);
+    
 
-        EventSystem.current.SetSelectedGameObject(_audioMenuFirst);
-
-    }
-
-    #endregion
-
-    #region Salir con escape
-    private void optionsOut()
-    {
-        _mainMenu.SetActive(false);
-        _audioOptionsMenu.SetActive(false);
-        _audioMenu.SetActive(false);
-        _optionsMenu.SetActive(true);
-
-
-        EventSystem.current.SetSelectedGameObject(_optionsMenuFirst);
-
-    }
-    #endregion
+    
 }
