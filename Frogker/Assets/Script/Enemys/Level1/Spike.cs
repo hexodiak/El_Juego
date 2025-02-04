@@ -15,7 +15,7 @@ public class Spike : MonoBehaviour
     private void Start()
     {
         //animator.SetTrigger("");
-        StartCoroutine(WaitAndDestroy(2.0f));
+        //StartCoroutine(WaitAndDestroy(2.0f));
     }
 
     private void Update()
@@ -23,6 +23,7 @@ public class Spike : MonoBehaviour
         ///temp = transform.localScale;
         //temp.y *= Time.deltaTime;
         //transform.localScale = temp;
+        StartCoroutine(WaitAndDestroy(1.0f));
     }
 
     #endregion
@@ -47,6 +48,7 @@ public class Spike : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Destroy(gameObject);
+        //animator.SetTrigger("Idle");
     }
 
     #endregion

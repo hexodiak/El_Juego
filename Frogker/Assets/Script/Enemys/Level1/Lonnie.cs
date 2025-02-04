@@ -46,17 +46,17 @@ public class Lonnie : MonoBehaviour
         if (collision.gameObject.layer == 8)//toca al jugador
         {
             Debug.Log("toca jugador");
-            animator.SetTrigger("idle");
+            animator.SetTrigger("Idle");
         }
         if (collision.gameObject.layer == 3)//touches floor
         {
             Debug.Log("toca piso");
-            animator.SetTrigger("idle");
+            animator.SetTrigger("Idle");
         }
         if (collision.gameObject.layer == 6)//touches wall
         {
             Debug.Log("toca pared");
-            animator.SetTrigger("idle");
+            animator.SetTrigger("Idle");
         }
 
     }
@@ -76,8 +76,14 @@ public class Lonnie : MonoBehaviour
         Instantiate(wood, Wood1.position, Wood1.rotation);
         Instantiate(wood, Wood2.position, Wood2.rotation);
         Instantiate(wood, Wood3.position, Wood3.rotation);
-    }
 
+        StartCoroutine(Ciclo(1.0f));
+    }
+    IEnumerator Ciclo(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        animator.SetTrigger("Idle");
+    }
 
     #endregion
 

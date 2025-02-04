@@ -13,8 +13,8 @@ public class Lonnie_Choose : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-        //num = Random.Range(0, 2);
-        num = 0;
+        num = Random.Range(0, 2);
+        //num = 1;
 
         if (num == 0)
         {

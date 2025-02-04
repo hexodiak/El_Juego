@@ -13,8 +13,9 @@ public class BeakSecond : StateMachineBehaviour
     {
         lonnie = animator.GetComponent<Lonnie>();
         enemyBasic = animator.GetComponent<EnemyBasic>();
-        lonnie.BeakAttack();
         enemyBasic.LookAtPlayer();
+        lonnie.BeakAttack();
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
