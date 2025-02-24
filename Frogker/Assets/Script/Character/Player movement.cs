@@ -104,15 +104,14 @@ public class Playermovement : MonoBehaviour
         {
             crounch = true;
             boxColliderToCrouch.enabled = false;
-            horizontal *= (speed / 3);
-            //RB.velocity = new Vector2(horizontal * m_CrouchSpeed, verticalVelocity);
+            RB.velocity = new Vector2(horizontal * m_CrouchSpeed, RB.velocity.y);
             _animation.SetBool("Crouch", true);
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
             crounch = false;
             boxColliderToCrouch.enabled = true;
-            RB.velocity = new Vector2(horizontal * speed, verticalVelocity);
+            RB.velocity = new Vector2(horizontal * speed, RB.velocity.y);
             _animation.SetBool("Crouch", false);
         }
 
