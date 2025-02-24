@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class Playermovement : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class Playermovement : MonoBehaviour
     private bool doubleJump; // Controla el segundo salto en el aire
 
     //Crouch
-    private float m_CrouchSpeed = .36f;
-    private bool crounch;//identificador de estar agachado funciona junto con el groundcheck
+    private float m_CrouchSpeed = .6f;
+    private bool crouch;//identificador de estar agachado funciona junto con el groundcheck
 
     
     private float jumpingPower = 9.5f; // Potencia de salto
@@ -100,20 +101,30 @@ public class Playermovement : MonoBehaviour
         }
 
         #region Crouch
+
+        // Detectar si el jugador quiere agacharse
         if (Input.GetKeyDown(KeyCode.S))
         {
-            crounch = true;
+            crouch = true;
             boxColliderToCrouch.enabled = false;
-            RB.velocity = new Vector2(horizontal * m_CrouchSpeed, RB.velocity.y);
             _animation.SetBool("Crouch", true);
+
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            crounch = false;
+            crouch = false;
             boxColliderToCrouch.enabled = true;
-            RB.velocity = new Vector2(horizontal * speed, RB.velocity.y);
             _animation.SetBool("Crouch", false);
         }
+
+
+        if (crouch)
+        {
+            // Mantener la velocidad reducida si está agachado
+            float moveSpeed = crouch ? m_CrouchSpeed : speed;
+            horizontal = horizontal * moveSpeed;
+        }else { }
+        
 
 
         #endregion
