@@ -6,6 +6,11 @@ using UnityEngine.InputSystem.EnhancedTouch;
 
 public class Playermovement : MonoBehaviour
 {
+    #region Otros scripts
+    public Scorpion scorpion;
+
+    #endregion
+
     #region Variables Movimiento, salto, crouch
 
     private float horizontal; // Definir direccion
@@ -13,6 +18,7 @@ public class Playermovement : MonoBehaviour
     private float speed = 5f; // Velocidad total
     private bool isFacingRight = true; // Definir X
     private bool doubleJump; // Controla el segundo salto en el aire
+    public Vector3 localScale;
 
     //Crouch
     private float m_CrouchSpeed = .6f;
@@ -73,7 +79,10 @@ public class Playermovement : MonoBehaviour
     public BoxCollider2D boxColliderToCrouch;//deactivate de upper collider to crouch
     #endregion
 
-
+    private void Start()
+    {
+        scorpion = GetComponent<Scorpion>();
+    }
 
     private void Awake()
     {
@@ -187,7 +196,26 @@ public class Playermovement : MonoBehaviour
         {
             Flip();
         }
+
+
+
+        #region Validacion scorpion
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (isGrounded())
+            {
+
+                scorpion.Attack();
+            }
+            else { Debug.Log("No esta en el piso"); }
+            
+        }
+
+        #endregion
     }
+
+    
 
     public bool isGrounded()
     {
@@ -222,7 +250,7 @@ public class Playermovement : MonoBehaviour
         isDashing = true;
         float originalGravity = RB.gravityScale;
         RB.gravityScale = 1f;
-        if (!isFacingRight)
+        if (Mathf.Sign(transform.localScale.x) < -1)
         {
             RB.velocity = new Vector2(transform.localScale.x * dashinPower * -1, 1f); //* -1
         }
@@ -309,10 +337,10 @@ public class Playermovement : MonoBehaviour
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
-            transform.Rotate(0f, 180f, 0);
-            //Vector3 localScale = transform.localScale;
-            //localScale.x *= -1f;
-            //transform.localScale = localScale;
+            //transform.Rotate(0f, 180f, 0);
+            localScale = transform.localScale;
+            localScale.x *= -1;
+            transform.localScale = localScale;
 
             if (isGrounded())
             {

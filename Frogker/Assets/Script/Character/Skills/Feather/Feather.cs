@@ -8,13 +8,16 @@ public class Feather : MonoBehaviour
     float speed = 10f;
     public Rigidbody2D rb;
     int damage = 5;
-
+    Playermovement playermovement;
+    public Transform nighty;
     #endregion
 
     #region Start move and collison to hit enemy
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        float direction = Mathf.Sign(nighty.localScale.x);
+        Debug.Log(direction);
+        rb.velocity = transform.right * speed * direction;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

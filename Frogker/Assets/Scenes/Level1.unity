@@ -5821,6 +5821,7 @@ GameObject:
   - component: {fileID: 2031230327}
   - component: {fileID: 2031230330}
   - component: {fileID: 2031230331}
+  - component: {fileID: 2031230333}
   m_Layer: 8
   m_Name: Nighty
   m_TagString: Player
@@ -6198,6 +6199,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.079893105}
   m_Radius: 0.08695616
+--- !u!114 &2031230333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031230322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb805d703caa245409d2b5d73f508d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 4173519920777791794, guid: c7fc7d90a70eec344bb5aed1741a440e, type: 3}
+  attackOffset: 1.5
 --- !u!1 &2043546887
 GameObject:
   m_ObjectHideFlags: 0
