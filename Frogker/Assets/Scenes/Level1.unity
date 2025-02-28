@@ -706,7 +706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &464054889
 Transform:
   m_ObjectHideFlags: 0
@@ -5988,6 +5988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4482b04ed31c1964ababf96530aabbf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localScale: {x: 0, y: 0, z: 0}
   jumpStartTime: 0.25
   RB: {fileID: 2031230325}
   groundCheck: {fileID: 2113903620}
@@ -6212,7 +6213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 4173519920777791794, guid: c7fc7d90a70eec344bb5aed1741a440e, type: 3}
-  attackOffset: 1.5
+  damage: 5
+  lifetime: 3
 --- !u!1 &2043546887
 GameObject:
   m_ObjectHideFlags: 0

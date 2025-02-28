@@ -7,7 +7,7 @@ using UnityEngine.InputSystem.EnhancedTouch;
 public class Playermovement : MonoBehaviour
 {
     #region Otros scripts
-    public Scorpion scorpion;
+    Scorpion scorpion;
 
     #endregion
 

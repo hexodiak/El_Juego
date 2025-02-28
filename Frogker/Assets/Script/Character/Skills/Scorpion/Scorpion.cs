@@ -7,7 +7,13 @@ public class Scorpion : MonoBehaviour
     public GameObject attackPrefab; // Prefab
     float attackOffset = 5f; // Distancia delante del personaje
 
-    
+    public int damage = 5;
+    public float lifetime = 3f; // Destruir el proyectil después de 3 segundos
+
+    void Start()
+    {
+        //Destroy(attackPrefab, lifetime);
+    }
 
     public void Attack()
     {

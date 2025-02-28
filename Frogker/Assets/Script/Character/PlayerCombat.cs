@@ -23,6 +23,7 @@ public class PlayerCombat : MonoBehaviour
     //Variables para ataque de rango
     public Transform featherPoint; //donde sale la pluma
     public GameObject feather; //pluma
+    float featherspeed = 10f;//velocidad pluma
 
     #endregion
 
@@ -94,7 +95,15 @@ public class PlayerCombat : MonoBehaviour
     #region Range Attacks
     void FeatherAttack() //Feather attack
     {
-        Instantiate(feather, featherPoint.position, featherPoint.rotation);
+        // Instanciar el proyectil en la posición y rotación del firePoint
+        GameObject featherprojectile = Instantiate(feather, featherPoint.position, featherPoint.rotation);
+
+        // Obtener el Rigidbody2D del proyectil y asignarle velocidad en la dirección correcta
+        Rigidbody2D rb = featherprojectile.GetComponent<Rigidbody2D>();
+        float direction = Mathf.Sign(transform.localScale.x); // 1 si mira a la derecha, -1 si mira a la izquierda
+        rb.velocity = new Vector2(featherspeed * direction, 0);
+
+
     }
     #endregion
 
