@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,27 @@ public class Scorpion : MonoBehaviour
     float attackOffset = 5f; // Distancia delante del personaje
 
     public int damage = 5;
-    public float lifetime = 3f; // Destruir el proyectil después de 3 segundos
+    public float lifetime = .2f; // Destruir el proyectil después de 3 segundos
 
-    void Start()
+    void Update()
     {
         //Destroy(attackPrefab, lifetime);
+        StartCoroutine(Espera());
     }
-
+    IEnumerator Espera()
+    {
+        yield return new WaitForSeconds(lifetime);
+        try
+        {
+            DestroyImmediate(attackPrefab, true);
+        }
+        catch (Exception ex)
+        {
+            // Manejo del error
+            Debug.Log("controlado borrado de scorpio");
+        }
+        
+    }
     public void Attack()
     {
         // Determinar la dirección del personaje

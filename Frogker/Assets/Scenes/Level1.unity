@@ -706,7 +706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &464054889
 Transform:
   m_ObjectHideFlags: 0
@@ -6214,7 +6214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 4173519920777791794, guid: c7fc7d90a70eec344bb5aed1741a440e, type: 3}
   damage: 5
-  lifetime: 3
+  lifetime: 2
 --- !u!1 &2043546887
 GameObject:
   m_ObjectHideFlags: 0

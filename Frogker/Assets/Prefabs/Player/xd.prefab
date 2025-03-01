@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2600696326435437106}
   - component: {fileID: -752016592130865150}
   - component: {fileID: -2591910466928271205}
+  - component: {fileID: -4897878399464231182}
   m_Layer: 0
   m_Name: xd
   m_TagString: Untagged
@@ -112,3 +113,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4897878399464231182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4173519920777791794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb805d703caa245409d2b5d73f508d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPrefab: {fileID: 4173519920777791794}
+  damage: 5
+  lifetime: 2
