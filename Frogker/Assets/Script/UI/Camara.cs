@@ -11,6 +11,8 @@ public class Camera : MonoBehaviour
 
     [SerializeField] private Transform target;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,4 +26,6 @@ public class Camera : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position,targetPosition, ref velocity, smoothTime);
 
     }
+
+    
 }

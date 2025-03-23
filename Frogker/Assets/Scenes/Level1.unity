@@ -230,6 +230,92 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7208311213284428478, guid: f91b73bce0ba3024a88d1a0a93ebd7b3, type: 3}
   m_PrefabInstance: {fileID: 53307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2587089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2587090}
+  - component: {fileID: 2587091}
+  m_Layer: 0
+  m_Name: CameraBounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2587090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 189.109, y: -45.131218, z: -0.002477779}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &2587091
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587089}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.8247223, y: 9.054573}
+      - {x: -9.716834, y: 9.059238}
+      - {x: -9.837266, y: -3.776432}
+      - {x: 3.4770203, y: -4.0780716}
+      - {x: 9.5625305, y: -3.9722672}
+      - {x: 12.120714, y: -3.533344}
+      - {x: 12.332404, y: 8.993191}
+  m_UseDelaunayMesh: 0
 --- !u!1 &7420746
 GameObject:
   m_ObjectHideFlags: 0
@@ -7107,6 +7193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2068223253}
   - component: {fileID: 2068223252}
+  - component: {fileID: 2068223254}
   m_Layer: 0
   m_Name: 2dCamera
   m_TagString: Untagged
@@ -7169,6 +7256,23 @@ Transform:
   - {fileID: 1823081979}
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068223254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068223251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 2587091}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1 &2082614203
 GameObject:
   m_ObjectHideFlags: 0
@@ -7656,6 +7760,7 @@ SceneRoots:
   - {fileID: 2135450256}
   - {fileID: 766562877}
   - {fileID: 519420032}
+  - {fileID: 2587090}
   - {fileID: 964950081}
   - {fileID: 2031230324}
   - {fileID: 949478869}
