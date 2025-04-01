@@ -19,7 +19,7 @@ public class Wood : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        ;
+        
         PlayerStats player = collision.GetComponent<PlayerStats>();
         if (collision.tag == "Player")
         {
@@ -27,7 +27,11 @@ public class Wood : MonoBehaviour
             player.TakeDamagePlayer(damage);
             Destroy(gameObject);
         }
-        //Destroy(gameObject);
+        if (collision.gameObject.layer == 3)
+        {
+            
+            Destroy(gameObject);
+        }
     }
     #endregion
 }
