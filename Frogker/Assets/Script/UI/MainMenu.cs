@@ -52,8 +52,8 @@ public class MainMenu : MonoBehaviour
         _climbMenu.SetActive(false);
         _optionsMenu.SetActive(false);
         _extrasMenu.SetActive(false);
-
         
+
 
 
         _mainMenu.SetActive(true);
@@ -71,6 +71,7 @@ public class MainMenu : MonoBehaviour
     private void Options()
     {
         _mainMenu.SetActive(false);
+        //_mainMenu.GetComponent<MainMenu>().enabled=false;
         _optionsMenu.SetActive(true);
         
 

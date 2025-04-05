@@ -21,6 +21,15 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private GameObject _optionsMenuFirst;
 
 
+    void Update()
+    {
+        //Utilizar la tecla escape en el options menu
+        if (Input.GetKeyDown(KeyCode.Escape)) backButton();
+        if (Input.GetKeyDown(KeyCode.Escape) && _videoOptionsMenu == true) backButton();
+        //if (Input.GetKeyDown(KeyCode.Escape) && _controlsOptionsMenu == true) backButton();
+
+    }
+
     #region Audio options
     public void audioOptionsMenu()
     {
