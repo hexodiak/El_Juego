@@ -28,7 +28,15 @@ public class AudioSettings : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        //audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        if (volume <= 0.0001f)
+        {
+            audioMixer.SetFloat("MusicVolume", -80f);  // Silencio total
+        }
+        else
+        {
+            audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        }
     }
 }
 
