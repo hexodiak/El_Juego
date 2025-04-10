@@ -46,7 +46,7 @@ public class MainMenu : MonoBehaviour
 
     #region MainMenu interaction
 
-    private void Menu() 
+    public void Menu() 
     { 
         //menu principal
         _climbMenu.SetActive(false);
