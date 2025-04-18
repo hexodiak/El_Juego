@@ -11,13 +11,17 @@ public class OptionsMenu : MonoBehaviour
     [Header("Opciones de menu")]
     [SerializeField] private GameObject _audioOptionsMenu;
     [SerializeField] private GameObject _videoOptionsMenu;
-    //[SerializeField] private GameObject _controlsOptionsMenu;
+    [SerializeField] private GameObject _controlsOptionsMenu;
+    [SerializeField] private GameObject _controlsOptionsMenuKeybindings;
+    [SerializeField] private GameObject _controlsOptionsMenuGamepad;
     
 
     [Header("Options to scroll")]
     [SerializeField] private GameObject _audioOptionsFirst;
     [SerializeField] private GameObject _videoOptionsFirst;
-    //[SerializeField] private GameObject _controlsOptionsFirst;
+    [SerializeField] private GameObject _controlsOptionsFirst;
+    [SerializeField] private GameObject _controlsOptionsFirstKeybindings;
+    [SerializeField] private GameObject _controlsOptionsFirstGamepad;
     [SerializeField] private GameObject _optionsMenuFirst;
 
 
@@ -53,12 +57,45 @@ public class OptionsMenu : MonoBehaviour
 
     #endregion
 
+    #region Controls Menu
+    public void controlsOptionsMenu() //abre el menu para escoger que editar de controles
+    {
+        _optionsMenu.SetActive(false);
+        _controlsOptionsMenu.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_controlsOptionsFirst);
+
+    }
+
+    public void controlsOptionsMenuKeyBindings() //abre las opciones para editar el teclado
+    {
+        _controlsOptionsMenu.SetActive(false);
+        _controlsOptionsMenuKeybindings.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_controlsOptionsFirstKeybindings);
+
+    }
+
+
+    public void controlsOptionsMenuGamepad() // abre las opciones para editar el control o gamepad
+    {
+        _controlsOptionsMenu.SetActive(false);
+        _controlsOptionsMenuGamepad.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_controlsOptionsFirstGamepad);
+
+    }
+    #endregion
+
+
     #region Back Button
     public void backButton()
     {
         _audioOptionsMenu.SetActive(false);
         _videoOptionsMenu.SetActive(false);
-        //_controlsOptionsMenu.SetActive(false);
+        _controlsOptionsMenu.SetActive(false);
+        _controlsOptionsMenuKeybindings.SetActive(false);
+        _controlsOptionsMenuGamepad.SetActive(false);
         _optionsMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(_optionsMenuFirst);
 
