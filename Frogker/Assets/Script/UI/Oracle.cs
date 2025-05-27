@@ -1,29 +1,82 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // O usar TMPro si prefieres
+using TMPro;
 
 public class Oracle : MonoBehaviour
 {
-    [Header("Variables gameobject panel textos")]
-    [SerializeField] private GameObject dialogoOracle;
-    
+    public GameObject dialogPanel;
+    public TextMeshProUGUI dialogText;
+    private string[] dialogLines;
+    private int currentLine = 0;
+    private bool playerInRange = false;
+    private bool dialogActive = false;
 
-    void Start()
+    private void Start()
     {
-        dialogoOracle.SetActive(false);
-    }
+        dialogLines = new string[] {
+            "Hola Candidato", 
+            "Esta parte de tu aventura..." 
+        };
 
-    
+
+
+    }
     void Update()
     {
-        
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            if (!dialogActive)
+            {
+                StartDialog();
+            }
+            else
+            {
+                NextLine();
+            }
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void StartDialog()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        dialogActive = true;
+        currentLine = 0;
+        dialogPanel.SetActive(true);
+        dialogText.text = dialogLines[currentLine];
+    }
+
+    void NextLine()
+    {
+        currentLine++;
+        if (currentLine < dialogLines.Length)
         {
-            dialogoOracle.SetActive(true);
+            dialogText.text = dialogLines[currentLine];
+        }
+        else
+        {
+            dialogPanel.SetActive(false);
+            dialogActive = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            if (dialogActive)
+            {
+                dialogPanel.SetActive(false);
+                dialogActive = false;
+            }
         }
     }
 }
+
