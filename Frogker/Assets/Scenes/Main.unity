@@ -3988,6 +3988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e49300805d953c4aa3f0142fa1fe85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031230322}
   dialogPanel: {fileID: 1583994078}
   dialogText: {fileID: 428023143}
   typingSpeed: 0.04
@@ -4662,7 +4663,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031230322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea1c14c72b9cfe448ab95dc44cda7620, type: 3}
   m_Name: 
@@ -4675,7 +4676,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031230322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 348db9389c854e246945e935be6e57a7, type: 3}
   m_Name: 

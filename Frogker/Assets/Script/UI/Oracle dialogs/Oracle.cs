@@ -1,10 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI; // O usar TMPro si prefieres
 using TMPro;
 using System.Collections;
 
 public class Oracle : MonoBehaviour
 {
+    [SerializeField] private GameObject player;
+    private Playermovement movementScript;
+
     public GameObject dialogPanel;
     public TextMeshProUGUI dialogText;
     public float typingSpeed = 0.04f;
@@ -16,6 +19,12 @@ public class Oracle : MonoBehaviour
 
     private void Start()
     {
+        if (player != null)
+        {
+            movementScript = player.GetComponent<Playermovement>();
+            
+        }
+
         dialogLines = new string[] {
         "Hola Candidato",
         "Esta parte de tu aventura...sdsddsdsadsdsdasdsdsdsdsdas sadasd sd ad adsad sdsa dasd s dasdsd"
@@ -43,6 +52,11 @@ public class Oracle : MonoBehaviour
         dialogActive = true;
         currentLine = 0;
         dialogPanel.SetActive(true);
+
+        if (movementScript != null)
+            movementScript.enabled = false; // ← bloqueo de acciones
+        
+
         StartCoroutine(TypeLine(dialogLines[currentLine]));
     }
 
@@ -57,6 +71,10 @@ public class Oracle : MonoBehaviour
         {
             dialogPanel.SetActive(false);
             dialogActive = false;
+
+            if (movementScript != null)
+                movementScript.enabled = true; // ← Desbloqueo de acciones 
+            
         }
     }
 
