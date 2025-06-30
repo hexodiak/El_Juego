@@ -18,7 +18,7 @@ public class Oracle : MonoBehaviour
     {
         dialogLines = new string[] {
         "Hola Candidato",
-        "Esta parte de tu aventura..."
+        "Esta parte de tu aventura...sdsddsdsadsdsdasdsdsdsdsdas sadasd sd ad adsad sdsa dasd s dasdsd"
         };
         dialogPanel.SetActive(false);
     }
