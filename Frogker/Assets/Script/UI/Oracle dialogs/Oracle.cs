@@ -26,8 +26,10 @@ public class Oracle : MonoBehaviour
         }
 
         dialogLines = new string[] {
-        "Hola Candidato",
-        "Esta parte de tu aventura...sdsddsdsadsdsdasdsdsdsdsdas sadasd sd ad adsad sdsa dasd s dasdsd"
+        "Que esperas para seguir o que, no me digas que te quieres rendir",
+        "No diria que vas mejor que los demas pero...",
+        "...",
+        "Ah, esperabas que dijera algo bueno?"
         };
         dialogPanel.SetActive(false);
     }
