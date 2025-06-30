@@ -1,26 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI; // O usar TMPro si prefieres
 using TMPro;
+using System.Collections;
 
 public class Oracle : MonoBehaviour
 {
     public GameObject dialogPanel;
     public TextMeshProUGUI dialogText;
-    private string[] dialogLines;
+    public float typingSpeed = 0.04f;
+    public string[] dialogLines;
     private int currentLine = 0;
     private bool playerInRange = false;
     private bool dialogActive = false;
+    private bool isTyping = false;
 
     private void Start()
     {
         dialogLines = new string[] {
-            "Hola Candidato", 
-            "Esta parte de tu aventura..." 
+        "Hola Candidato",
+        "Esta parte de tu aventura..."
         };
-
-
-
+        dialogPanel.SetActive(false);
     }
+
     void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
@@ -29,7 +31,7 @@ public class Oracle : MonoBehaviour
             {
                 StartDialog();
             }
-            else
+            else if (!isTyping)
             {
                 NextLine();
             }
@@ -41,7 +43,7 @@ public class Oracle : MonoBehaviour
         dialogActive = true;
         currentLine = 0;
         dialogPanel.SetActive(true);
-        dialogText.text = dialogLines[currentLine];
+        StartCoroutine(TypeLine(dialogLines[currentLine]));
     }
 
     void NextLine()
@@ -49,7 +51,7 @@ public class Oracle : MonoBehaviour
         currentLine++;
         if (currentLine < dialogLines.Length)
         {
-            dialogText.text = dialogLines[currentLine];
+            StartCoroutine(TypeLine(dialogLines[currentLine]));
         }
         else
         {
@@ -58,12 +60,21 @@ public class Oracle : MonoBehaviour
         }
     }
 
+    IEnumerator TypeLine(string line)
+    {
+        isTyping = true;
+        dialogText.text = "";
+        foreach (char c in line)
+        {
+            dialogText.text += c;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        isTyping = false;
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
-        }
+        if (other.CompareTag("Player")) playerInRange = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -71,11 +82,9 @@ public class Oracle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            if (dialogActive)
-            {
-                dialogPanel.SetActive(false);
-                dialogActive = false;
-            }
+            dialogPanel.SetActive(false);
+            dialogActive = false;
+            StopAllCoroutines();
         }
     }
 }
