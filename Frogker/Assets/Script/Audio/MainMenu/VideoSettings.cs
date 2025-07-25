@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VideoSettings : MonoBehaviour
 {
     public TMP_Dropdown resolutionDropdown;
+    public Toggle fullscreenToggle;
 
     private Resolution[] resolutions;
     private int currentResolutionIndex = 0;
@@ -34,21 +36,38 @@ public class VideoSettings : MonoBehaviour
 
         // Leer el índice guardado si existe
         int savedResolutionIndex = PlayerPrefs.GetInt("resolutionIndex", currentResolutionIndex);
+        bool isFullscreen = PlayerPrefs.GetInt("fullscreen", 1) == 1;
 
         resolutionDropdown.value = savedResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
-        SetResolution(savedResolutionIndex); // Aplicar al inicio
+        fullscreenToggle.isOn = isFullscreen;
 
-        resolutionDropdown.onValueChanged.AddListener(SetResolution);
+        ApplyResolution(savedResolutionIndex, isFullscreen); ; // Aplicar al inicio
+
+        resolutionDropdown.onValueChanged.AddListener(OnResolutionChange);
+        fullscreenToggle.onValueChanged.AddListener(OnFullscreenToggle);
     }
 
-    public void SetResolution(int resolutionIndex)
+    void OnResolutionChange(int resolutionIndex)
     {
-        Resolution res = resolutions[resolutionIndex];
-        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        ApplyResolution(resolutionIndex, fullscreenToggle.isOn);
 
-        PlayerPrefs.SetInt("resolutionIndex", resolutionIndex); // Guardar selección de resolucion
+        PlayerPrefs.SetInt("resolutionIndex", resolutionIndex);
         PlayerPrefs.Save();
+    }
+
+    void OnFullscreenToggle(bool isFullscreen)
+    {
+        ApplyResolution(resolutionDropdown.value, isFullscreen);
+
+        PlayerPrefs.SetInt("fullscreen", isFullscreen ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    void ApplyResolution(int index, bool isFullscreen)
+    {
+        Resolution res = resolutions[index];
+        Screen.SetResolution(res.width, res.height, isFullscreen);
     }
 }
