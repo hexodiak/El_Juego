@@ -6,16 +6,20 @@ using UnityEngine.UI;
 
 public class VideoSettings : MonoBehaviour
 {
+    //Resolution settings
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
-
     private Resolution[] resolutions;
     private int currentResolutionIndex = 0;
 
+    //Vsync setting
+    public Toggle vsyncToggle;
+
     void Start()
     {
-        resolutions = Screen.resolutions;
 
+
+        resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
         var options = new System.Collections.Generic.List<string>();
@@ -42,13 +46,20 @@ public class VideoSettings : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
 
         fullscreenToggle.isOn = isFullscreen;
-
         ApplyResolution(savedResolutionIndex, isFullscreen); ; // Aplicar al inicio
 
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChange);
         fullscreenToggle.onValueChanged.AddListener(OnFullscreenToggle);
+
+        //Indice guardado vsync
+        bool vsyncEnabled = PlayerPrefs.GetInt("vsync", 1) == 1;
+        vsyncToggle.isOn = vsyncEnabled;
+        QualitySettings.vSyncCount = vsyncEnabled ? 1 : 0;
+
+        vsyncToggle.onValueChanged.AddListener(OnVsyncToggle);
     }
 
+    #region Resolution, fullscreen methods
     void OnResolutionChange(int resolutionIndex)
     {
         ApplyResolution(resolutionIndex, fullscreenToggle.isOn);
@@ -70,4 +81,15 @@ public class VideoSettings : MonoBehaviour
         Resolution res = resolutions[index];
         Screen.SetResolution(res.width, res.height, isFullscreen);
     }
+    #endregion
+
+    #region vsync method
+    void OnVsyncToggle(bool enabled)
+    {
+        QualitySettings.vSyncCount = enabled ? 1 : 0;
+        PlayerPrefs.SetInt("vsync", enabled ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    #endregion
 }
