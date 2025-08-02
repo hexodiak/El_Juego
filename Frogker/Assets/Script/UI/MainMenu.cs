@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;//scenes
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -93,7 +95,7 @@ public class MainMenu : MonoBehaviour
 
     #endregion
 
-    
 
     
+
 }
