@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class OptionsMenu : MonoBehaviour
 {
+    #region Variables
     [Header("Gameobject central del menu")]
     [SerializeField] private GameObject _optionsMenu;
 
@@ -24,7 +25,7 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private GameObject _controlsOptionsFirstGamepad;
     [SerializeField] private GameObject _optionsMenuFirst;
 
-
+    #endregion
     void Update()
     {
         //Utilizar la tecla escape en el options menu
