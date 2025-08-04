@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Translator_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: f35a5ce5c7e2cef438d83bb993eef4bc, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 6672109340697034756
+  m_TableData:
+  - m_Id: 518950670336
+    m_Localized: Grimper
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 389826073251840
+    m_Localized: Options
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 390037923352576
+    m_Localized: Extras
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 390149798023168
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 392160161484800
+    m_Localized: Audio
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 392357637705728
+    m_Localized: Jeu
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 392494317490176
+    m_Localized: "Contr\xF4les"
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 392704863162368
+    m_Localized: Retour
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 402935567536128
+    m_Localized: 'Volume principal:'
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 403435734093824
+    m_Localized: 'Sons:'
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 403786696675328
+    m_Localized: 'Musique:'
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 406650823299072
+    m_Localized: "R\xE9solution:"
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 407039689805824
+    m_Localized: "Plein \xE9cran:"
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 407561863876608
+    m_Localized: 'Langue:'
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 408851444584448
+    m_Localized: En haut
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 409285076897792
+    m_Localized: Gauche
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 409444644999168
+    m_Localized: Droit
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 409585833660416
+    m_Localized: Plier
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 409885172748288
+    m_Localized: Attaque
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 410037757333504
+    m_Localized: Tiret
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 410284629872640
+    m_Localized: Plume
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 410386224304128
+    m_Localized: Inventaire
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 410525215150080
+    m_Localized: Carte
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 410619125616640
+    m_Localized: Interagir
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 410918938660864
+    m_Localized: Saut
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 412725282787328
+    m_Localized: Clavier
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  - m_Id: 413538940014592
+    m_Localized: Gamepad
+    m_Metadata:
+      m_Items:
+      - rid: 6672109340697034756
+  references:
+    version: 2
+    RefIds:
+    - rid: 6672109340697034756
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00d0ded37800000000d09e748b62010000d0dec7bc62010000d01ed4d662010000d01ee7aa64010000d05eb4f864010000d0deb92965010000d09ee1d864010000d05ebf776e010000d09e33ec6e010000d09eea3d6f010000d0dec5d871010000d01e503372010000d01ee4ac72010000d01e25d973010000d09e1b3e74010000d09e426374010000d01e228474010000d01ed4c974010000d0de5aed74010000d09ed52675010000d01e7d3e75010000d09ed95e75010000d01eb77475010000d05e85ba75010000d0de175f77010000d09e891c780100
